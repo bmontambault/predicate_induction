@@ -1,0 +1,1247 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Documentation &mdash; Predicate Induction 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to Predicate Induction’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Predicate Induction
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tabular"><code class="docutils literal notranslate"><span class="pre">Tabular</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#predicate"><code class="docutils literal notranslate"><span class="pre">Predicate</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conjunction"><code class="docutils literal notranslate"><span class="pre">Conjunction</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#predicateinduction"><code class="docutils literal notranslate"><span class="pre">PredicateInduction</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bottomup"><code class="docutils literal notranslate"><span class="pre">BottomUp</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Predicate Induction</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/predicate_induction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data">
+<h2><code class="docutils literal notranslate"><span class="pre">Data</span></code><a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="data_type.Data">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">data_type.</span></span><span class="sig-name descname"><span class="pre">Data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is the abstract class inherited by data type classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>source</strong> (<em>str</em>) – Reference to the data source (e.g. a csv or connection string)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Data.convert_data">
+<span class="sig-name descname"><span class="pre">convert_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_dtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Data.convert_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert data from one dtype to another.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – Key in data to be converted</p></li>
+<li><p><strong>old_dtype</strong> (<em>str</em>) – Dtype to be converted from</p></li>
+<li><p><strong>new_dtype</strong> (<em>str</em>) – Dtype to be converted to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>converted data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Data.convert_dtype">
+<span class="sig-name descname"><span class="pre">convert_dtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_dtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Data.convert_dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set data and dtypes to reflect dtype conversions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – Key in data to be converted</p></li>
+<li><p><strong>old_dtype</strong> (<em>str</em>) – Dtype to be converted from</p></li>
+<li><p><strong>new_dtype</strong> (<em>str</em>) – Dtype to be converted to</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Data.extract">
+<span class="sig-name descname"><span class="pre">extract</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Data.extract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract data into object from source</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Data.infer_dtypes">
+<span class="sig-name descname"><span class="pre">infer_dtypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Data.infer_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Infer data types for the given data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – Data whose data types will be infered</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dictionary of data types</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Data.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Data.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load data from object into source</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – Data to be loaded</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="data_type.Data.original_data">
+<span class="sig-name descname"><span class="pre">original_data</span></span><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#data_type.Data.original_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="tabular">
+<h2><code class="docutils literal notranslate"><span class="pre">Tabular</span></code><a class="headerlink" href="#tabular" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="data_type.Tabular">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">data_type.</span></span><span class="sig-name descname"><span class="pre">Tabular</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_points_per_bin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Tabular" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#data_type.Data" title="data_type.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">data_type.Data</span></code></a></p>
+<p>This is the class used for handling tabular data. Data from either a csv or data base connection
+will be converted to a pandas dataframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em>) – Reference to the data source (e.g. a csv or connection string)</p></li>
+<li><p><strong>num_bins</strong> (<em>int</em>) – Number of bins to use when converting from numeric to ordinal</p></li>
+<li><p><strong>num_points_per_bin</strong> (<em>int</em>) – Number of points per bin to use when converting from numeric to ordinal</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Tabular.bin_numeric">
+<span class="sig-name descname"><span class="pre">bin_numeric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_points_per_bin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Tabular.bin_numeric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bin numeric column</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>str</em>) – The column to bin</p></li>
+<li><p><strong>num_bins</strong> (<em>int</em>) – Number of bins to use when converting from numeric to ordinal</p></li>
+<li><p><strong>num_points_per_bin</strong> (<em>int</em>) – Number of points per bin to use when converting from numeric to ordinal</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Tabular.convert_data">
+<span class="sig-name descname"><span class="pre">convert_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_dtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Tabular.convert_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert data from one dtype to another. Currently only numeric to ordinal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>str</em>) – The column in data to be converted</p></li>
+<li><p><strong>old_dtype</strong> (<em>str</em>) – Dtype to be converted from</p></li>
+<li><p><strong>new_dtype</strong> (<em>str</em>) – Dtype to be converted to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>converted data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Tabular.extract">
+<span class="sig-name descname"><span class="pre">extract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Tabular.extract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set data from either csv or postgresql table, or from passed dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Dataframe to set as data, reads from source if this is None</p></li>
+<li><p><strong>dtypes</strong> (<em>dict</em>) – Dictionary mapping columns to dtypes if data is not None, can be inferred if data is not None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Tabular.extract_csv">
+<span class="sig-name descname"><span class="pre">extract_csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Tabular.extract_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read csv</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Tabular.extract_postgresql">
+<span class="sig-name descname"><span class="pre">extract_postgresql</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Tabular.extract_postgresql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read from postgresql table</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Tabular.get_table_name_engine">
+<span class="sig-name descname"><span class="pre">get_table_name_engine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Tabular.get_table_name_engine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract table name and engine from source</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>source</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>table_name, engine</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str, sqlalchemy.Engine</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Tabular.infer_column_dtype">
+<span class="sig-name descname"><span class="pre">infer_column_dtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Tabular.infer_column_dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Infer data types for the given data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Data whose data types will be infered</p></li>
+<li><p><strong>column</strong> (<em>str</em>) – Column whose data type will be infered</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dtype</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Tabular.infer_dtypes">
+<span class="sig-name descname"><span class="pre">infer_dtypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Tabular.infer_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Infer data types for the given data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>pd.DataFrame</em>) – Data whose data types will be infered</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dictionary mapping column to data type</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Tabular.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Tabular.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load data from source, either csv of postgresql connection string</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Tabular.load_csv">
+<span class="sig-name descname"><span class="pre">load_csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Tabular.load_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load data from source csv</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_type.Tabular.load_postgresql">
+<span class="sig-name descname"><span class="pre">load_postgresql</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Tabular.load_postgresql" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load data from source postgresql connection string</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="predicate">
+<h2><code class="docutils literal notranslate"><span class="pre">Predicate</span></code><a class="headerlink" href="#predicate" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="predicate.Predicate">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate.</span></span><span class="sig-name descname"><span class="pre">Predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjacent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstract class for predicate object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keys</strong> (<em>list</em>) – Variables covered by this predicate, dependent on type of data (e.g. columns for Tabular)</p></li>
+<li><p><strong>mask</strong> – Returns subset when applied to data</p></li>
+<li><p><strong>score</strong> (<em>dict</em>) – Dictionary of scores, any of which can be used during predicate induction</p></li>
+<li><p><strong>adjacent</strong> (<em>dict</em>) – Dictionary mapping each key to a list of any adjacent predicates along that axis</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="predicate.Predicate.allowed_dtypes">
+<span class="sig-name descname"><span class="pre">allowed_dtypes</span></span><em class="property"> <span class="pre">=</span> <span class="pre">['nominal',</span> <span class="pre">'ordinal',</span> <span class="pre">'numeric']</span></em><a class="headerlink" href="#predicate.Predicate.allowed_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="predicate.Predicate.allowed_dtypes_map">
+<span class="sig-name descname"><span class="pre">allowed_dtypes_map</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{}</span></em><a class="headerlink" href="#predicate.Predicate.allowed_dtypes_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.get_mask">
+<span class="sig-name descname"><span class="pre">get_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.get_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a mask that will return a subset when applied to the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – Data to return mask for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>mask</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.get_mask_cached">
+<span class="sig-name descname"><span class="pre">get_mask_cached</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.get_mask_cached" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a mask that will return a subset when applied to the data. Get the cached results if available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – Data to return mask for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>mask</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.get_score">
+<span class="sig-name descname"><span class="pre">get_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.get_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a score based on the data and the given scoring function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Data to get score for</p></li>
+<li><p><strong>score_f</strong> (<em>function</em>) – Function used to calculate score</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>score</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.get_score_cached">
+<span class="sig-name descname"><span class="pre">get_score_cached</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.get_score_cached" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a score based on the data and the given scoring function. Get the cached results if available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Data to get score for</p></li>
+<li><p><strong>score_f</strong> – Function used to calculate score</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>score</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.init_data_keys">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">init_data_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_dtypes_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.init_data_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize data across the given keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Raw data to be initialized</p></li>
+<li><p><strong>data_type</strong> (<a class="reference internal" href="#data_type.Data" title="data_type.Data"><em>data_type.Data</em></a>) – Data type class</p></li>
+<li><p><strong>allowed_dtypes</strong> (<em>list</em>) – List of allowed data types</p></li>
+<li><p><strong>allowed_dtypes_map</strong> (<em>dict</em>) – Dictionary mapping data types to allowed data types</p></li>
+<li><p><strong>dtypes</strong> (<em>dict</em>) – Dictionary mapping keys to dtype</p></li>
+<li><p><strong>keys</strong> (<em>list</em>) – List of keys to include</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.init_predicates_bottom_up">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">init_predicates_bottom_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.init_predicates_bottom_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialized predicates for bottom up predicate induction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – Data to initialize base predicates from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.init_predicates_top_down">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">init_predicates_top_down</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.init_predicates_top_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialized predicates for top down predicate induction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – Data to initialize base predicates from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.is_adjacent">
+<span class="sig-name descname"><span class="pre">is_adjacent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.is_adjacent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given predicate is adjacent to this predicate along the given axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – Axis along which predicates are adjacent</p></li>
+<li><p><strong>predicate</strong> – Adjacent predicate of the same type</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether or not the given predicate is adjacent along the given axis</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.is_contained">
+<span class="sig-name descname"><span class="pre">is_contained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.is_contained" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if this predicate is contained by the given predicate along the given axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – Check along this axis whether this predicate is contained</p></li>
+<li><p><strong>predicate</strong> – Predicate of the same type that will be checked to see if it contains this predicate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether or not this predicate is contained by the given predicate along the given axis</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.is_subsumed">
+<span class="sig-name descname"><span class="pre">is_subsumed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.is_subsumed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if this predicate is subsumed by the given predicate along the given axis for the given scoring function.
+A predicate is subsumed by another if it is both contained along the given axis and has a lower score.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – Check along this axis whether this predicate is subsumed</p></li>
+<li><p><strong>predicate</strong> – Predicate of the same type that will be checked to see if it subsumes this predicate</p></li>
+<li><p><strong>data</strong> – Data to get score for</p></li>
+<li><p><strong>score_f</strong> (<em>function</em>) – Function used to calculate score</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether or not this predicate is subsumed by the given predicate along the given axis</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.is_subsumed_any">
+<span class="sig-name descname"><span class="pre">is_subsumed_any</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.is_subsumed_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if this predicate is subsumed by any of a list of predicates across the given axis for the given scoring function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – Check along this axis whether this predicate is subsumed</p></li>
+<li><p><strong>accepted</strong> (<em>list</em>) – Lost of predicates of the same type that will be checked to see if it subsumes this predicate</p></li>
+<li><p><strong>data</strong> – Data to get score for</p></li>
+<li><p><strong>score_f</strong> (<em>function</em>) – Function used to calculate score</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether or not this predicate is subsumed by any of the given predicate along the given axis</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.is_subsumed_any_all_keys">
+<span class="sig-name descname"><span class="pre">is_subsumed_any_all_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">accepted</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.is_subsumed_any_all_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if this predicate is subsumed by any of a list or predicates across all keys for the given scoring function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>accepted</strong> (<em>list</em>) – Lost of predicates of the same type that will be checked to see if it subsumes this predicate</p></li>
+<li><p><strong>data</strong> – Data to get score for</p></li>
+<li><p><strong>score_f</strong> (<em>function</em>) – Function used to calculate score</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether or not this predicate is subsumed</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge this predicate with the given predicate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate</strong> – Predicate of the same type to merge with</p></li>
+<li><p><strong>data</strong> – Data to calculate score and mask for merged predicate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Merged predicate</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.set_adjacent">
+<span class="sig-name descname"><span class="pre">set_adjacent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.set_adjacent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set this predicate and the given predicate to be adjacent to each other along the axis of the given key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – Axis along which predicates are adjacent</p></li>
+<li><p><strong>predicate</strong> – Adjacent predicate of the same type</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.set_adjacent_predicate">
+<span class="sig-name descname"><span class="pre">set_adjacent_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.set_adjacent_predicate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set given predicate to be adjacent to this predicate along the axis of the given key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – Axis along which predicates are adjacent</p></li>
+<li><p><strong>predicate</strong> – Adjacent predicate of the same type</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="conjunction">
+<h2><code class="docutils literal notranslate"><span class="pre">Conjunction</span></code><a class="headerlink" href="#conjunction" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="predicate.Conjunction">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate.</span></span><span class="sig-name descname"><span class="pre">Conjunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_to_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_to_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjacent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Conjunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">predicate.Predicate</span></code></a></p>
+<p>This class defines subsets of data as a conjunction over tabular data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>columns_to_values</strong> – Dictionary of lists mapping columns in the data set to values defining a subset of the data</p></li>
+<li><p><strong>dtypes</strong> (<em>dict</em>) – Dictionary mapping columns to dtypes</p></li>
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Dataframe that this predicate will take a subset of</p></li>
+<li><p><strong>column_to_mask</strong> (<em>dict</em>) – Dictionary mapping columns to a mask for each column, will be recalculated if None</p></li>
+<li><p><strong>mask</strong> (<em>np.array</em><em>, </em><em>pd.Series</em>) – Returns subset when applied to data</p></li>
+<li><p><strong>score</strong> (<em>dict</em>) – Dictionary of scores, any of which can be used during predicate induction</p></li>
+<li><p><strong>adjacent</strong> (<em>dict</em>) – Dictionary mapping each key to a list of any adjacent predicates along that axis</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="predicate.Conjunction.allowed_dtypes">
+<span class="sig-name descname"><span class="pre">allowed_dtypes</span></span><em class="property"> <span class="pre">=</span> <span class="pre">['nominal',</span> <span class="pre">'ordinal']</span></em><a class="headerlink" href="#predicate.Conjunction.allowed_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="predicate.Conjunction.allowed_dtypes_map">
+<span class="sig-name descname"><span class="pre">allowed_dtypes_map</span></span><em class="property"> <span class="pre">=</span> <span class="pre">{'numeric':</span> <span class="pre">'ordinal'}</span></em><a class="headerlink" href="#predicate.Conjunction.allowed_dtypes_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Conjunction.bottom_up_init">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">bottom_up_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Conjunction.bottom_up_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialized predicates for bottom up predicate induction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_obj</strong> (<a class="reference internal" href="#data_type.Data" title="data_type.Data"><em>Data</em></a>) – Data object used to initialize predicates, will be generated from data and dtypes if None</p></li>
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Data to initialize base predicates from if no data_obj is provided</p></li>
+<li><p><strong>dtypes</strong> (<em>dict</em>) – Dictionary mapping columns to dtype if no data_obj is provided</p></li>
+<li><p><strong>columns</strong> (<em>list</em>) – List of columns to include</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Conjunction.get_column_to_mask">
+<span class="sig-name descname"><span class="pre">get_column_to_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_to_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Conjunction.get_column_to_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a mask for each column given a dictionary of columns to values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>columns_to_values</strong> – Dictionary of lists mapping columns in the data set to values defining a subset of the data</p></li>
+<li><p><strong>columns_to_values</strong> – Dictionary of lists mapping columns in the data set to values defining a subset of the data</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Conjunction.get_mask">
+<span class="sig-name descname"><span class="pre">get_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_to_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Conjunction.get_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a mask from a dictionary mapping columns to values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>columns_to_values</strong> – Dictionary of lists mapping columns in the data set to values defining a subset of the data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Conjunction.get_mask_from_column_to_mask">
+<span class="sig-name descname"><span class="pre">get_mask_from_column_to_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_to_mask</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Conjunction.get_mask_from_column_to_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a mask from a dictionary mapping columns to masks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>column_to_mask</strong> (<em>dict</em>) – Dictionary mapping columns to a mask for each column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Conjunction.init_data_keys">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">init_data_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Conjunction.init_data_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize data for the given columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dtypes</strong> (<em>dict</em>) – Dictionary mapping keys to dtype</p></li>
+<li><p><strong>columns</strong> (<em>list</em>) – List of columns to include</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Conjunction.is_contained">
+<span class="sig-name descname"><span class="pre">is_contained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Conjunction.is_contained" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if this predicate is contained by the given predicate along the given column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<em>str</em>) – Check along this axis whether this predicate is contained</p></li>
+<li><p><strong>predicate</strong> – Predicate of the same type that will be checked to see if it contains this predicate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether or not this predicate is contained by the given predicate along the given column</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Conjunction.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Conjunction.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge this predicate with the given predicate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate</strong> – Predicate of the same type to merge with</p></li>
+<li><p><strong>data</strong> – Data to calculate score and mask for merged predicate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Merged predicate</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#predicate.Conjunction" title="predicate.Conjunction">Conjunction</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="predicateinduction">
+<h2><code class="docutils literal notranslate"><span class="pre">PredicateInduction</span></code><a class="headerlink" href="#predicateinduction" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate_induction.</span></span><span class="sig-name descname"><span class="pre">PredicateInduction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frontier_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstract class for predicate induction object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Data to search</p></li>
+<li><p><strong>base_predicates</strong> (<em>list</em>) – List of predicates to begin search</p></li>
+<li><p><strong>score_f</strong> (<em>function</em>) – Function used to score predicates</p></li>
+<li><p><strong>frontier_predicates</strong> (<em>list</em>) – List of predicates to continue search from, set to base_predicates if None</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.expand_frontier">
+<span class="sig-name descname"><span class="pre">expand_frontier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expand_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.expand_frontier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expand the current frontier given an expansion function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>expand_f</strong> (<em>function</em>) – The function used to expand the current frontier</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.expand_frontier_nsteps">
+<span class="sig-name descname"><span class="pre">expand_frontier_nsteps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.expand_frontier_nsteps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expand the current frontier for a given number of steps</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – Number of steps to expand the frontier</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.get_predicate_score">
+<span class="sig-name descname"><span class="pre">get_predicate_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.get_predicate_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return score for the given predicate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate to score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.greedy_merge">
+<span class="sig-name descname"><span class="pre">greedy_merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.greedy_merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge a list of predicates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicates</strong> (<em>list</em>) – List of predicates to merge</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of merged predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.greedy_merge_predicate">
+<span class="sig-name descname"><span class="pre">greedy_merge_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.greedy_merge_predicate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge a given predicate with a list of other predicates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate to merge with other predicates</p></li>
+<li><p><strong>predicates</strong> – List of predicates to merge</p></li>
+</ul>
+</dd>
+</dl>
+<p>:type predicates list
+:param verbose: Option to print messages
+:type verbose: bool</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.greedy_merge_step">
+<span class="sig-name descname"><span class="pre">greedy_merge_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.greedy_merge_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>A single step of merging a list of predicates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicates</strong> (<em>list</em>) – List of predicates to merge</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of merged predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.insert_sorted">
+<span class="sig-name descname"><span class="pre">insert_sorted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.insert_sorted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert the given predicate into the given queue in sorted order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>queue</strong> (<em>list</em>) – List of predicates to insert into</p></li>
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate to insert</p></li>
+<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.update_predicate_frontier">
+<span class="sig-name descname"><span class="pre">update_predicate_frontier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frontier_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.update_predicate_frontier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the current frontier given a predicate and its children. If the predicate has not children and has a score greater
+than the set threshold it will be added to the list of accepted predicates. Otherwise its children will be added to the list
+of frontier predicates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frontier_predicates</strong> (<em>list</em>) – Current list of frontier predicates</p></li>
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Original predicate</p></li>
+<li><p><strong>children</strong> (<em>list</em>) – Children of original predicate</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="bottomup">
+<h2><code class="docutils literal notranslate"><span class="pre">BottomUp</span></code><a class="headerlink" href="#bottomup" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate_induction.</span></span><span class="sig-name descname"><span class="pre">BottomUp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frontier_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#predicate_induction.PredicateInduction" title="predicate_induction.PredicateInduction"><code class="xref py py-class docutils literal notranslate"><span class="pre">predicate_induction.PredicateInduction</span></code></a></p>
+<p>This class is for performing bottom up predicate induction. This method involves beginning with a large number
+of predicates, each covering a small space of the data, and merging predicates into a smaller number each covering
+a larger space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Data to search</p></li>
+<li><p><strong>base_predicates</strong> (<em>list</em>) – List of predicates to begin search</p></li>
+<li><p><strong>score_f</strong> (<em>function</em>) – Function used to score predicates</p></li>
+<li><p><strong>frontier_predicates</strong> (<em>list</em>) – List of predicates to continue search from, set to base_predicates if None</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.apply_all_keys">
+<span class="sig-name descname"><span class="pre">apply_all_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.apply_all_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a function to all keys included in a given predicate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate that the function will be applied to</p></li>
+<li><p><strong>keys</strong> (<em>list</em>) – List of keys</p></li>
+<li><p><strong>f</strong> (<em>function</em>) – Function to apply to the given predicate</p></li>
+<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.expand_frontier">
+<span class="sig-name descname"><span class="pre">expand_frontier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.expand_frontier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expand the current frontier for one step.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.merge_adjacent_predicate">
+<span class="sig-name descname"><span class="pre">merge_adjacent_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.merge_adjacent_predicate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expand the given predicate by merging with adjacent predicates along all keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate that will be merged with adjacent predicates</p></li>
+<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.merge_adjacent_predicate_key">
+<span class="sig-name descname"><span class="pre">merge_adjacent_predicate_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.merge_adjacent_predicate_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expand the given predicate by merging with adjacent predicates along the given key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate that will be merged with adjacent predicates</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – Axis along which predicates will be merged</p></li>
+<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.merge_predicate_candidates_key">
+<span class="sig-name descname"><span class="pre">merge_predicate_candidates_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.merge_predicate_candidates_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge the given predicate with a set of candidate predicates along a the given key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate that will be merged with candidate predicates</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – Axis along which predicates will be merged</p></li>
+<li><p><strong>candidate_predicates</strong> (<em>list</em>) – List of predicates to merge</p></li>
+<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.refine_merge_adjacent_predicate">
+<span class="sig-name descname"><span class="pre">refine_merge_adjacent_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.refine_merge_adjacent_predicate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refine and expand a given predicate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate that will be refined and expanded</p></li>
+<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.refine_predicate">
+<span class="sig-name descname"><span class="pre">refine_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.refine_predicate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refine the given predicate by adding additional keys that the predicate does not already include.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate that will be refined by adding additional keys</p></li>
+<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.refine_predicate_key">
+<span class="sig-name descname"><span class="pre">refine_predicate_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.refine_predicate_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refine the given predicate by merging with base predicates with the given key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate that will be merged with base predicates with the given key</p></li>
+<li><p><strong>key</strong> (<em>str</em>) – Axis along which predicates will be merged</p></li>
+<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Predicate Induction’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, bmontambault.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
