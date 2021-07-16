@@ -1,6 +1,5 @@
 import numpy as np
 from copy import deepcopy
-from predicate import Conjunction
 
 class PredicateInduction(object):
     """Abstract class for predicate induction object.
