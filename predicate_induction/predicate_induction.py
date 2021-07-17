@@ -201,8 +201,8 @@ class BottomUp(PredicateInduction):
     :type frontier: list
     """
 
-    def __init__(self, data, base_predicates, score_f, frontier=None):
-        super().__init__(data, base_predicates, score_f, frontier)
+    def __init__(self, data, base_predicates, score_f, frontier=None, accepted=None, rejected=None):
+        super().__init__(data, base_predicates, score_f, frontier, accepted, rejected)
         self.keys = list(set([p.keys[0] for p in self.base_predicates]))
         self.key_to_base_predicates = {k:
             [p for p in self.base_predicates if len(p.keys) == 1 and p.keys[0] == k]
