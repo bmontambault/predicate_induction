@@ -73,6 +73,11 @@ class Data(object):
             self.data[key] = converted_data
             self.dtypes[key] = new_dtype
 
+    def convert_all(self, allowed_dtypes_map, allowed_dtypes, keys):
+        for key in keys:
+            if self.dtypes[key] not in allowed_dtypes:
+                self.convert_dtype(key, self.dtypes[key], allowed_dtypes_map[self.dtypes[key]])
+
     def __call__(self, predicate):
         """Return a subset of the data given a predicate.
 
@@ -240,7 +245,7 @@ class Tabular(Data):
             num_bins = int(self.data.shape[0] / num_points_per_bin)
         bins = pd.cut(self.data[column], bins=num_bins)
         categories = bins.drop_duplicates().sort_values().reset_index(drop=True)
-        return bins.map(pd.Series(categories.index, index=categories.values))
+        return bins.map(pd.Series(categories.index, index=categories.values)).astype(int)
 
     def convert_data(self, column, old_dtype, new_dtype):
         """Convert data from one dtype to another. Currently only numeric to ordinal.

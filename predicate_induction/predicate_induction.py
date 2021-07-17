@@ -9,20 +9,27 @@ class PredicateInduction(object):
     :type base_predicates: list
     :param score_f: Function used to score predicates
     :type score_f: function
-    :param frontier_predicates: List of predicates to continue search from, set to base_predicates if None
-    :type frontier_predicates: list
+    :param frontier: List of predicates to continue search from, set to base_predicates if None
+    :type frontier: list
     """
 
-    def __init__(self, data, base_predicates, score_f, frontier_predicates=None):
+    def __init__(self, data, base_predicates, score_f, frontier=None, accepted=None, rejected=None):
         self.data = data
         self.base_predicates = base_predicates
         self.score_f = score_f
-        self.frontier_predicates = []
-        if frontier_predicates is None:
-            frontier_predicates = self.base_predicates
-        for p in frontier_predicates:
-            self.insert_sorted(self.frontier_predicates, p)
-        self.accepted = []
+        self.frontier = []
+        if frontier is None:
+            frontier = self.base_predicates
+        for p in frontier:
+            self.insert_sorted(self.frontier, p)
+        if accepted is None:
+            self.accepted = []
+        else:
+            self.accepted = accepted
+        if rejected is None:
+            self.rejected = []
+        else:
+            self.rejected = rejected
 
     def get_predicate_score(self, predicate):
         """Return score for the given predicate
@@ -57,14 +64,19 @@ class PredicateInduction(object):
                 return i
         queue.append(predicate)
         return len(queue)
+
+    def prune_subsumed(self, predicates):
+        for predicate in predicates:
+            if predicate.is_subsumed_any_all_keys(self.frontier, self.data, self.score_f):
+                predicates.remove(predicate)
         
-    def update_predicate_frontier(self, frontier_predicates, predicate, children):
+    def update_predicate_frontier(self, frontier, predicate, children):
         """Update the current frontier given a predicate and its children. If the predicate has not children and has a score greater
         than the set threshold it will be added to the list of accepted predicates. Otherwise its children will be added to the list
         of frontier predicates.
 
-        :param frontier_predicates: Current list of frontier predicates
-        :type frontier_predicates: list
+        :param frontier: Current list of frontier predicates
+        :type frontier: list
         :param predicate: Original predicate
         :type predicate: Predicate
         :param children: Children of original predicate
@@ -73,9 +85,11 @@ class PredicateInduction(object):
 
         if len(children) > 0:
             for predicate in children:
-                self.insert_sorted(frontier_predicates, predicate)
+                self.insert_sorted(frontier, predicate)
         elif self.get_predicate_score(predicate) > 0:
             self.insert_sorted(self.accepted, predicate, verbose=True)
+        else:
+            self.insert_sorted(self.rejected, predicate, verbose=True)
 
     def expand_frontier(self, expand_f, verbose=False):
         """Expand the current frontier given an expansion function.
@@ -84,13 +98,15 @@ class PredicateInduction(object):
         :type expand_f: function
         """
 
-        new_frontier_predicates = []
-        while len(self.frontier_predicates) > 0:
-            predicate = self.frontier_predicates.pop(0)
-            accepted = self.frontier_predicates+new_frontier_predicates+self.accepted
+        new_frontier = []
+        while len(self.frontier) > 0:
+            predicate = self.frontier.pop(0)
+            accepted = self.frontier+new_frontier+self.accepted
             expanded_predicates = expand_f(predicate, accepted, verbose)
-            self.update_predicate_frontier(new_frontier_predicates, predicate, expanded_predicates)
-        self.frontier_predicates = new_frontier_predicates
+            self.update_predicate_frontier(new_frontier, predicate, expanded_predicates)
+        self.frontier = new_frontier
+        self.prune_subsumed(self.accepted)
+        self.prune_subsumed(self.rejected)
 
     def greedy_merge_predicate(self, predicate, predicates, verbose=False):
         """Merge a given predicate with a list of other predicates.
@@ -163,8 +179,13 @@ class PredicateInduction(object):
         :type n: int
         """
         i = 0
-        while len(self.frontier_predicates) > 0 and i < n:
+        while len(self.frontier) > 0 and i < n:
+            if verbose:
+                print(len(self.accepted), len(self.frontier))
             self.expand_frontier(verbose)
+            i+=1
+            if verbose:
+                print(i, len(self.accepted), len(self.frontier))
 
 class BottomUp(PredicateInduction):
     """This class is for performing bottom up predicate induction. This method involves beginning with a large number
@@ -176,12 +197,12 @@ class BottomUp(PredicateInduction):
     :type base_predicates: list
     :param score_f: Function used to score predicates
     :type score_f: function
-    :param frontier_predicates: List of predicates to continue search from, set to base_predicates if None
-    :type frontier_predicates: list
+    :param frontier: List of predicates to continue search from, set to base_predicates if None
+    :type frontier: list
     """
 
-    def __init__(self, data, base_predicates, score_f, frontier_predicates=None):
-        super().__init__(data, base_predicates, score_f, frontier_predicates)
+    def __init__(self, data, base_predicates, score_f, frontier=None):
+        super().__init__(data, base_predicates, score_f, frontier)
         self.keys = list(set([p.keys[0] for p in self.base_predicates]))
         self.key_to_base_predicates = {k:
             [p for p in self.base_predicates if len(p.keys) == 1 and p.keys[0] == k]

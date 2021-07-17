@@ -347,11 +347,11 @@ class Conjunction(Predicate):
                 column_to_values[column] = list(set(values + column_to_values[column]))
                 column_to_mask[column] = column_to_mask[column] | predicate.column_to_mask[column]
                 if column in adjacent:
-                    adjacent[column] = [p for p in self.adjacent[column] if not p.is_contained_column(predicate, column) and p not in predicate.adjacent] \
-                                    + [p for p in predicate.adjacent[column] if not p.is_contained_column(self, column) and p not in self.adjacent]
+                    adjacent[column] = [p for p in self.adjacent[column] if not p.is_contained(column, predicate) and p not in predicate.adjacent] \
+                                    + [p for p in predicate.adjacent[column] if not p.is_contained(column, self) and p not in self.adjacent]
 
         mask = self.get_mask_from_column_to_mask(column_to_mask)
-        merged_predicate = Conjunction(column_to_values, self.dtypes, column_to_mask=column_to_mask, mask=mask, adjacent=adjacent, parents=[self, predicate])
+        merged_predicate = Conjunction(column_to_values, self.dtypes, column_to_mask=column_to_mask, mask=mask, adjacent=adjacent)
         return merged_predicate
 
     @staticmethod
@@ -387,9 +387,11 @@ class Conjunction(Predicate):
             data_obj, columns = Conjunction.init_data_keys(data, dtypes, columns)
         elif columns is None:
             raise ValueError("if passing data_obj must also pass columns")
+        data_obj.convert_all(Conjunction.allowed_dtypes_map, Conjunction.allowed_dtypes, columns)
+
         predicates = []
         for column in columns:
-            column_predicates = [Conjunction(column_to_values={column: [val]}, data=data_obj.data, dtypes=data_obj.dtypes) for val in data_obj.data[column].unique()]
+            column_predicates = [Conjunction(column_to_values={column: [val]}, data=data_obj.data, dtypes=data_obj.dtypes) for val in sorted(data_obj.data[column].unique())]
             if data_obj.dtypes[column] == 'ordinal':
                 for i in range(len(column_predicates)):
                     if i > 0:
