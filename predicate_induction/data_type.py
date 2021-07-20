@@ -122,6 +122,8 @@ class Tabular(Data):
         """
 
         pd_dtype = str(data[column].dtype)
+        if data[column].isin([0,1]).all():
+            return 'binary'
         if 'float' in pd_dtype:
             return 'numeric'
         elif 'int' in pd_dtype:
