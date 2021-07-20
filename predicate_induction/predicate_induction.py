@@ -51,6 +51,8 @@ class PredicateInduction(object):
         :type accepted: list
         :param verbose: Option to print messages
         :type verbose: bool
+        :return: Index where predicate was insorted
+        :rtype: int
         """
 
         if len(queue) == 0:
@@ -66,6 +68,14 @@ class PredicateInduction(object):
         return len(queue)
 
     def prune_subsumed(self, predicates):
+        """Prune predicates from a given list that are subsumed by predicates in the frontier.
+
+        :param predicates: List of predicates to prune
+        :type predicates: list
+        :return: Pruned list of predicates
+        :rtype: list
+        """
+
         not_subsumed = []
         while len(predicates) > 0:
             predicate = predicates.pop(0)
@@ -95,29 +105,33 @@ class PredicateInduction(object):
         else:
             self.insert_sorted(self.rejected, predicate, verbose=True)
 
-    def expand_frontier_function(self, expand_f, expand_indices=None, verbose=False):
-        """Expand the current frontier given an expansion function.
+    def update_frontier_function(self, update_f, predicate_indices=None, verbose=False):
+        """Update the current frontier given an update function.
 
-        :param expand_f: The function used to expand the current frontier
-        :type expand_f: function
+        :param update_f: The function used to update the current frontier
+        :type update_f: function
+        :param predicate_indices: Indices of frontier predicates that will be updated, all predicates will be updated if None
+        :type predicate_indices: list
+        :param verbose: Option to print messages
+        :type verbose: bool
         """
 
         new_frontier = []
-        if expand_indices is None:
+        if predicate_indices is None:
             frontier = self.frontier[:]
         else:
-            frontier = self.frontier[expand_indices]
+            frontier = self.frontier[predicate_indices]
  
         while len(frontier) > 0:
             predicate = frontier.pop(0)
             accepted = frontier+new_frontier+self.accepted
-            expanded_predicates = expand_f(predicate, accepted, verbose)
+            expanded_predicates = update_f(predicate, accepted, verbose)
             self.update_predicate_frontier(new_frontier, predicate, expanded_predicates)
         
-        if expand_indices is None:
+        if predicate_indices is None:
             self.frontier = new_frontier
         else:
-            self.frontier = [self.frontier[i] for i in range(len(self.frontier)) if i not in expand_indices] + new_frontier
+            self.frontier = [self.frontier[i] for i in range(len(self.frontier)) if i not in predicate_indices] + new_frontier
 
         self.accepted = self.prune_subsumed(self.accepted)
         self.rejected = self.prune_subsumed(self.rejected)
@@ -186,17 +200,17 @@ class PredicateInduction(object):
             n_merged_predicates = len(predicates)
         return predicates
 
-    def expand_frontier_nsteps(self, n, verbose=False):
-        """Expand the current frontier for a given number of steps
+    def update_frontier_nsteps(self, n, verbose=False):
+        """Update the current frontier for a given number of steps
 
-        :param n: Number of steps to expand the frontier
+        :param n: Number of steps to update the frontier
         :type n: int
         """
         i = 0
         while len(self.frontier) > 0 and i < n:
             if verbose:
                 print(len(self.accepted), len(self.frontier))
-            self.expand_frontier(verbose)
+            self.update_frontier(verbose)
             i+=1
             if verbose:
                 print(i, len(self.accepted), len(self.frontier))
@@ -272,7 +286,7 @@ class BottomUp(PredicateInduction):
 
         return self.merge_predicate_candidates_key(predicate, key, self.key_to_base_predicates[key], accepted, verbose)
 
-    def merge_adjacent_predicate_key(self, predicate, key, accepted=None, verbose=False):
+    def expand_predicate_key(self, predicate, key, accepted=None, verbose=False):
         """Expand the given predicate by merging with adjacent predicates along the given key.
 
         :param predicate: Predicate that will be merged with adjacent predicates
@@ -323,7 +337,7 @@ class BottomUp(PredicateInduction):
 
         return self.apply_all_keys(predicate, [key for key in self.keys if key not in predicate.keys], self.refine_predicate_key, accepted, verbose)
 
-    def merge_adjacent_predicate(self, predicate, accepted=None, verbose=False):
+    def expand_predicate(self, predicate, accepted=None, verbose=False):
         """Expand the given predicate by merging with adjacent predicates along all keys.
 
         :param predicate: Predicate that will be merged with adjacent predicates
@@ -338,7 +352,7 @@ class BottomUp(PredicateInduction):
 
         return self.apply_all_keys(predicate, predicate.keys, self.merge_adjacent_predicate_key, accepted, verbose)
     
-    def refine_merge_adjacent_predicate(self, predicate, accepted=None, verbose=False):
+    def refine_expand_predicate(self, predicate, accepted=None, verbose=False):
         """Refine and expand a given predicate.
 
         :param predicate: Predicate that will be refined and expanded
@@ -353,14 +367,35 @@ class BottomUp(PredicateInduction):
 
         return self.refine_predicate(predicate, accepted, verbose) + self.merge_adjacent_predicate(predicate, accepted, verbose)
 
-    def expand_frontier_expand(self, expand_indices=None, verbose=False):
-        self.expand_frontier_function(self.merge_adjacent_predicate, expand_indices, verbose)
+    def update_frontier_expand(self, predicate_indices=None, verbose=False):
+        """Update the current frontier by expanding predicates.
 
-    def expand_frontier_refine(self, expand_indices=None, verbose=False):
-        self.expand_frontier_function(self.refine_predicate, expand_indices, verbose)
-
-    def expand_frontier(self, expand_indices=None, verbose=False):
-        """Expand the current frontier for one step.
+        :param predicate_indices: Indices of frontier predicates that will be updated, all predicates will be updated if None
+        :type predicate_indices: list
+        :param verbose: Option to print messages
+        :type verbose: bool
         """
 
-        self.expand_frontier_function(self.refine_merge_adjacent_predicate, expand_indices, verbose)
+        self.update_frontier_function(self.expand_predicate, predicate_indices, verbose)
+
+    def update_frontier_refine(self, predicate_indices=None, verbose=False):
+        """Update the current frontier by refining predicates.
+
+        :param predicate_indices: Indices of frontier predicates that will be updated, all predicates will be updated if None
+        :type predicate_indices: list
+        :param verbose: Option to print messages
+        :type verbose: bool
+        """
+
+        self.update_frontier_function(self.refine_predicate, predicate_indices, verbose)
+
+    def update_frontier(self, predicate_indices=None, verbose=False):
+        """Update the current frontier for one step.
+
+        :param predicate_indices: Indices of frontier predicates that will be updated, all predicates will be updated if None
+        :type predicate_indices: list
+        :param verbose: Option to print messages
+        :type verbose: bool
+        """
+
+        self.update_frontier_function(self.refine_expand_predicate, predicate_indices, verbose)
