@@ -139,7 +139,9 @@ class Predicate(object):
         if not contained:
             return False
         else:
-            worse = self.get_score(data , score_f) <= predicate.get_score(data, score_f)
+            score = self.get_score(data , score_f)
+            container_score = predicate.get_score(data, score_f)
+            worse = score <= container_score
             return worse
 
     def is_subsumed_any(self, key, accepted, data, score_f):

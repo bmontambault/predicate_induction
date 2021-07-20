@@ -66,9 +66,13 @@ class PredicateInduction(object):
         return len(queue)
 
     def prune_subsumed(self, predicates):
-        for predicate in predicates:
-            if predicate.is_subsumed_any_all_keys(self.frontier, self.data, self.score_f):
-                predicates.remove(predicate)
+        not_subsumed = []
+        while len(predicates) > 0:
+            predicate = predicates.pop(0)
+            is_subsumed = predicate.is_subsumed_any_all_keys(self.frontier, self.data, self.score_f)
+            if not is_subsumed:
+                not_subsumed.append(predicate)
+        return not_subsumed
         
     def update_predicate_frontier(self, frontier, predicate, children):
         """Update the current frontier given a predicate and its children. If the predicate has not children and has a score greater
@@ -91,7 +95,7 @@ class PredicateInduction(object):
         else:
             self.insert_sorted(self.rejected, predicate, verbose=True)
 
-    def expand_frontier(self, expand_f, verbose=False):
+    def expand_frontier_function(self, expand_f, expand_indices=None, verbose=False):
         """Expand the current frontier given an expansion function.
 
         :param expand_f: The function used to expand the current frontier
@@ -99,14 +103,24 @@ class PredicateInduction(object):
         """
 
         new_frontier = []
-        while len(self.frontier) > 0:
-            predicate = self.frontier.pop(0)
-            accepted = self.frontier+new_frontier+self.accepted
+        if expand_indices is None:
+            frontier = self.frontier[:]
+        else:
+            frontier = self.frontier[expand_indices]
+ 
+        while len(frontier) > 0:
+            predicate = frontier.pop(0)
+            accepted = frontier+new_frontier+self.accepted
             expanded_predicates = expand_f(predicate, accepted, verbose)
             self.update_predicate_frontier(new_frontier, predicate, expanded_predicates)
-        self.frontier = new_frontier
-        self.prune_subsumed(self.accepted)
-        self.prune_subsumed(self.rejected)
+        
+        if expand_indices is None:
+            self.frontier = new_frontier
+        else:
+            self.frontier = [self.frontier[i] for i in range(len(self.frontier)) if i not in expand_indices] + new_frontier
+
+        self.accepted = self.prune_subsumed(self.accepted)
+        self.rejected = self.prune_subsumed(self.rejected)
 
     def greedy_merge_predicate(self, predicate, predicates, verbose=False):
         """Merge a given predicate with a list of other predicates.
@@ -232,12 +246,12 @@ class BottomUp(PredicateInduction):
         new_accepted = []
         score = self.get_predicate_score(predicate)
         for candidate_predicate in candidate_predicates:
+            candidate_score = self.get_predicate_score(candidate_predicate)
             merged_predicate = predicate.merge(candidate_predicate)
             merged_score = self.get_predicate_score(merged_predicate)
             if verbose:
-                print(merged_predicate, merged_score, score)
-                print(merged_score > score, not merged_predicate.is_subsumed_any(key, accepted, self.data, self.score_f))
-            if merged_score > score and not merged_predicate.is_subsumed_any(key, accepted, self.data, self.score_f):
+                print(predicate, candidate_predicate, merged_predicate, score, candidate_score, merged_score)
+            if merged_score > score and merged_score > candidate_score and not merged_predicate.is_subsumed_any(key, accepted, self.data, self.score_f):
                 new_accepted.append(merged_predicate)
         return new_accepted
 
@@ -339,8 +353,14 @@ class BottomUp(PredicateInduction):
 
         return self.refine_predicate(predicate, accepted, verbose) + self.merge_adjacent_predicate(predicate, accepted, verbose)
 
-    def expand_frontier(self, verbose=False):
+    def expand_frontier_expand(self, expand_indices=None, verbose=False):
+        self.expand_frontier_function(self.merge_adjacent_predicate, expand_indices, verbose)
+
+    def expand_frontier_refine(self, expand_indices=None, verbose=False):
+        self.expand_frontier_function(self.refine_predicate, expand_indices, verbose)
+
+    def expand_frontier(self, expand_indices=None, verbose=False):
         """Expand the current frontier for one step.
         """
 
-        super().expand_frontier(self.refine_merge_adjacent_predicate, verbose)
+        self.expand_frontier_function(self.refine_merge_adjacent_predicate, expand_indices, verbose)
