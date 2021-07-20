@@ -1,5 +1,5 @@
 import pandas as pd
-from .data_type import Tabular
+from data_type import Tabular
 
 class Predicate(object):
     """Abstract class for predicate object.
@@ -34,6 +34,7 @@ class Predicate(object):
         :param data: Data to return mask for
         :return: mask
         """
+        
         raise NotImplementedError
 
     def get_mask_cached(self, data):
@@ -42,6 +43,7 @@ class Predicate(object):
         :param data: Data to return mask for
         :return: mask
         """
+
         if self.mask is None:
             mask = self.get_mask(data)
             self.mask = mask
@@ -56,6 +58,7 @@ class Predicate(object):
         :return: score
         :rtype: float
         """
+
         mask = self.get_mask_cached(data)
         return score_f(mask)
 
@@ -67,6 +70,7 @@ class Predicate(object):
         :return: score
         :rtype: float
         """
+
         score_f_name = score_f.__name__
         if score_f_name not in self.score:
             self.score[score_f_name] = self.get_score(data, score_f)
@@ -79,6 +83,7 @@ class Predicate(object):
         :type key: str
         :param predicate: Adjacent predicate of the same type
         """
+
         if key not in self.adjacent:
             self.adjacent[key] = [predicate]
         else:

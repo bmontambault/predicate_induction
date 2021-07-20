@@ -179,6 +179,11 @@
 </dd>
 </dl>
 <dl class="py method">
+<dt class="sig sig-object py" id="data_type.Data.convert_all">
+<span class="sig-name descname"><span class="pre">convert_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allowed_dtypes_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Data.convert_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="data_type.Data.convert_data">
 <span class="sig-name descname"><span class="pre">convert_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_dtype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_dtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#data_type.Data.convert_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert data from one dtype to another.</p>
@@ -875,7 +880,7 @@ A predicate is subsumed by another if it is both contained along the given axis 
 <h2><code class="docutils literal notranslate"><span class="pre">PredicateInduction</span></code><a class="headerlink" href="#predicateinduction" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="predicate_induction.PredicateInduction">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate_induction.</span></span><span class="sig-name descname"><span class="pre">PredicateInduction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frontier_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate_induction.</span></span><span class="sig-name descname"><span class="pre">PredicateInduction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frontier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rejected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Abstract class for predicate induction object.</p>
 <dl class="field-list simple">
@@ -884,32 +889,10 @@ A predicate is subsumed by another if it is both contained along the given axis 
 <li><p><strong>data</strong> – Data to search</p></li>
 <li><p><strong>base_predicates</strong> (<em>list</em>) – List of predicates to begin search</p></li>
 <li><p><strong>score_f</strong> (<em>function</em>) – Function used to score predicates</p></li>
-<li><p><strong>frontier_predicates</strong> (<em>list</em>) – List of predicates to continue search from, set to base_predicates if None</p></li>
+<li><p><strong>frontier</strong> (<em>list</em>) – List of predicates to continue search from, set to base_predicates if None</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.expand_frontier">
-<span class="sig-name descname"><span class="pre">expand_frontier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expand_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.expand_frontier" title="Permalink to this definition">¶</a></dt>
-<dd><p>Expand the current frontier given an expansion function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>expand_f</strong> (<em>function</em>) – The function used to expand the current frontier</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.expand_frontier_nsteps">
-<span class="sig-name descname"><span class="pre">expand_frontier_nsteps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.expand_frontier_nsteps" title="Permalink to this definition">¶</a></dt>
-<dd><p>Expand the current frontier for a given number of steps</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – Number of steps to expand the frontier</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="predicate_induction.PredicateInduction.get_predicate_score">
 <span class="sig-name descname"><span class="pre">get_predicate_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.get_predicate_score" title="Permalink to this definition">¶</a></dt>
@@ -949,13 +932,11 @@ A predicate is subsumed by another if it is both contained along the given axis 
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate to merge with other predicates</p></li>
-<li><p><strong>predicates</strong> – List of predicates to merge</p></li>
+<li><p><strong>predicates</strong> (<em>list</em>) – List of predicates to merge</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
 </ul>
 </dd>
 </dl>
-<p>:type predicates list
-:param verbose: Option to print messages
-:type verbose: bool</p>
 </dd></dl>
 
 <dl class="py method">
@@ -991,19 +972,68 @@ A predicate is subsumed by another if it is both contained along the given axis 
 <li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Index where predicate was insorted</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.prune_subsumed">
+<span class="sig-name descname"><span class="pre">prune_subsumed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.prune_subsumed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prune predicates from a given list that are subsumed by predicates in the frontier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>predicates</strong> (<em>list</em>) – List of predicates to prune</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Pruned list of predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.update_frontier_function">
+<span class="sig-name descname"><span class="pre">update_frontier_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.update_frontier_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the current frontier given an update function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>update_f</strong> (<em>function</em>) – The function used to update the current frontier</p></li>
+<li><p><strong>predicate_indices</strong> (<em>list</em>) – Indices of frontier predicates that will be updated, all predicates will be updated if None</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.update_frontier_nsteps">
+<span class="sig-name descname"><span class="pre">update_frontier_nsteps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.update_frontier_nsteps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the current frontier for a given number of steps</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – Number of steps to update the frontier</p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="predicate_induction.PredicateInduction.update_predicate_frontier">
-<span class="sig-name descname"><span class="pre">update_predicate_frontier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frontier_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.update_predicate_frontier" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">update_predicate_frontier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frontier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.update_predicate_frontier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the current frontier given a predicate and its children. If the predicate has not children and has a score greater
 than the set threshold it will be added to the list of accepted predicates. Otherwise its children will be added to the list
 of frontier predicates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>frontier_predicates</strong> (<em>list</em>) – Current list of frontier predicates</p></li>
+<li><p><strong>frontier</strong> (<em>list</em>) – Current list of frontier predicates</p></li>
 <li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Original predicate</p></li>
 <li><p><strong>children</strong> (<em>list</em>) – Children of original predicate</p></li>
 </ul>
@@ -1018,7 +1048,7 @@ of frontier predicates.</p>
 <h2><code class="docutils literal notranslate"><span class="pre">BottomUp</span></code><a class="headerlink" href="#bottomup" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="predicate_induction.BottomUp">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate_induction.</span></span><span class="sig-name descname"><span class="pre">BottomUp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frontier_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate_induction.</span></span><span class="sig-name descname"><span class="pre">BottomUp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frontier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rejected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#predicate_induction.PredicateInduction" title="predicate_induction.PredicateInduction"><code class="xref py py-class docutils literal notranslate"><span class="pre">predicate_induction.PredicateInduction</span></code></a></p>
 <p>This class is for performing bottom up predicate induction. This method involves beginning with a large number
 of predicates, each covering a small space of the data, and merging predicates into a smaller number each covering
@@ -1029,7 +1059,7 @@ a larger space.</p>
 <li><p><strong>data</strong> – Data to search</p></li>
 <li><p><strong>base_predicates</strong> (<em>list</em>) – List of predicates to begin search</p></li>
 <li><p><strong>score_f</strong> (<em>function</em>) – Function used to score predicates</p></li>
-<li><p><strong>frontier_predicates</strong> (<em>list</em>) – List of predicates to continue search from, set to base_predicates if None</p></li>
+<li><p><strong>frontier</strong> (<em>list</em>) – List of predicates to continue search from, set to base_predicates if None</p></li>
 </ul>
 </dd>
 </dl>
@@ -1057,14 +1087,8 @@ a larger space.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.BottomUp.expand_frontier">
-<span class="sig-name descname"><span class="pre">expand_frontier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.expand_frontier" title="Permalink to this definition">¶</a></dt>
-<dd><p>Expand the current frontier for one step.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.BottomUp.merge_adjacent_predicate">
-<span class="sig-name descname"><span class="pre">merge_adjacent_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.merge_adjacent_predicate" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.expand_predicate">
+<span class="sig-name descname"><span class="pre">expand_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.expand_predicate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Expand the given predicate by merging with adjacent predicates along all keys.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1084,8 +1108,8 @@ a larger space.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.BottomUp.merge_adjacent_predicate_key">
-<span class="sig-name descname"><span class="pre">merge_adjacent_predicate_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.merge_adjacent_predicate_key" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.expand_predicate_key">
+<span class="sig-name descname"><span class="pre">expand_predicate_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.expand_predicate_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Expand the given predicate by merging with adjacent predicates along the given key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1129,8 +1153,8 @@ a larger space.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.BottomUp.refine_merge_adjacent_predicate">
-<span class="sig-name descname"><span class="pre">refine_merge_adjacent_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.refine_merge_adjacent_predicate" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.refine_expand_predicate">
+<span class="sig-name descname"><span class="pre">refine_expand_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.refine_expand_predicate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Refine and expand a given predicate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1188,6 +1212,48 @@ a larger space.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.update_frontier">
+<span class="sig-name descname"><span class="pre">update_frontier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.update_frontier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the current frontier for one step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate_indices</strong> (<em>list</em>) – Indices of frontier predicates that will be updated, all predicates will be updated if None</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.update_frontier_expand">
+<span class="sig-name descname"><span class="pre">update_frontier_expand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.update_frontier_expand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the current frontier by expanding predicates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate_indices</strong> (<em>list</em>) – Indices of frontier predicates that will be updated, all predicates will be updated if None</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.update_frontier_refine">
+<span class="sig-name descname"><span class="pre">update_frontier_refine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.update_frontier_refine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the current frontier by refining predicates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate_indices</strong> (<em>list</em>) – Indices of frontier predicates that will be updated, all predicates will be updated if None</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

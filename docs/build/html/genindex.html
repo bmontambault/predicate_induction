@@ -215,14 +215,16 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="predicate_induction.html#predicate.Conjunction">Conjunction (class in predicate)</a>
 </li>
+      <li><a href="predicate_induction.html#data_type.Data.convert_all">convert_all() (data_type.Data method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="predicate_induction.html#data_type.Data.convert_data">convert_data() (data_type.Data method)</a>
 
       <ul>
         <li><a href="predicate_induction.html#data_type.Tabular.convert_data">(data_type.Tabular method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="predicate_induction.html#data_type.Data.convert_dtype">convert_dtype() (data_type.Data method)</a>
 </li>
   </ul></td>
@@ -239,22 +241,18 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="predicate_induction.html#predicate_induction.BottomUp.expand_frontier">expand_frontier() (predicate_induction.BottomUp method)</a>
-
-      <ul>
-        <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.expand_frontier">(predicate_induction.PredicateInduction method)</a>
+      <li><a href="predicate_induction.html#predicate_induction.BottomUp.expand_predicate">expand_predicate() (predicate_induction.BottomUp method)</a>
 </li>
-      </ul></li>
-      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.expand_frontier_nsteps">expand_frontier_nsteps() (predicate_induction.PredicateInduction method)</a>
+      <li><a href="predicate_induction.html#predicate_induction.BottomUp.expand_predicate_key">expand_predicate_key() (predicate_induction.BottomUp method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="predicate_induction.html#data_type.Data.extract">extract() (data_type.Data method)</a>
 
       <ul>
         <li><a href="predicate_induction.html#data_type.Tabular.extract">(data_type.Tabular method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="predicate_induction.html#data_type.Tabular.extract_csv">extract_csv() (data_type.Tabular method)</a>
 </li>
       <li><a href="predicate_induction.html#data_type.Tabular.extract_postgresql">extract_postgresql() (data_type.Tabular method)</a>
@@ -367,10 +365,6 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="predicate_induction.html#predicate_induction.BottomUp.merge_adjacent_predicate">merge_adjacent_predicate() (predicate_induction.BottomUp method)</a>
-</li>
-      <li><a href="predicate_induction.html#predicate_induction.BottomUp.merge_adjacent_predicate_key">merge_adjacent_predicate_key() (predicate_induction.BottomUp method)</a>
-</li>
       <li><a href="predicate_induction.html#predicate_induction.BottomUp.merge_predicate_candidates_key">merge_predicate_candidates_key() (predicate_induction.BottomUp method)</a>
 </li>
   </ul></td>
@@ -393,13 +387,15 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="predicate_induction.html#predicate_induction.PredicateInduction">PredicateInduction (class in predicate_induction)</a>
 </li>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.prune_subsumed">prune_subsumed() (predicate_induction.PredicateInduction method)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="predicate_induction.html#predicate_induction.BottomUp.refine_merge_adjacent_predicate">refine_merge_adjacent_predicate() (predicate_induction.BottomUp method)</a>
+      <li><a href="predicate_induction.html#predicate_induction.BottomUp.refine_expand_predicate">refine_expand_predicate() (predicate_induction.BottomUp method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -433,6 +429,18 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="predicate_induction.html#predicate_induction.BottomUp.update_frontier">update_frontier() (predicate_induction.BottomUp method)</a>
+</li>
+      <li><a href="predicate_induction.html#predicate_induction.BottomUp.update_frontier_expand">update_frontier_expand() (predicate_induction.BottomUp method)</a>
+</li>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.update_frontier_function">update_frontier_function() (predicate_induction.PredicateInduction method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.update_frontier_nsteps">update_frontier_nsteps() (predicate_induction.PredicateInduction method)</a>
+</li>
+      <li><a href="predicate_induction.html#predicate_induction.BottomUp.update_frontier_refine">update_frontier_refine() (predicate_induction.BottomUp method)</a>
+</li>
       <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.update_predicate_frontier">update_predicate_frontier() (predicate_induction.PredicateInduction method)</a>
 </li>
   </ul></td>

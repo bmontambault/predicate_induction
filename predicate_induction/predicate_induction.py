@@ -142,7 +142,7 @@ class PredicateInduction(object):
         :param predicate: Predicate to merge with other predicates
         :type predicate: Predicate
         :param predicates: List of predicates to merge
-        :type predicates list
+        :type predicates: list
         :param verbose: Option to print messages
         :type verbose: bool
         """
@@ -206,6 +206,7 @@ class PredicateInduction(object):
         :param n: Number of steps to update the frontier
         :type n: int
         """
+
         i = 0
         while len(self.frontier) > 0 and i < n:
             if verbose:
