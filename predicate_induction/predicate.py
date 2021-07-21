@@ -1,5 +1,5 @@
 import pandas as pd
-from data_type import Tabular
+from .data_type import Tabular
 
 class Predicate(object):
     """Abstract class for predicate object.
