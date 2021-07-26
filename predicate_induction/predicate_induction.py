@@ -405,7 +405,7 @@ class BottomUp(PredicateInduction):
 
         self.update_frontier_function(self.refine_predicate, predicates, predicate_indices, verbose)
 
-    def update_frontier(self, predicates=None, predicate_indices=None, verbose=False):
+    def update_frontier_expand_refine(self, predicates=None, predicate_indices=None, verbose=False):
         """Update the current frontier for one step.
 
         :param predicate_indices: Indices of frontier predicates that will be updated, all predicates will be updated if None
