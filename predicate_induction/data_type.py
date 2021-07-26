@@ -107,6 +107,7 @@ class Tabular(Data):
             self.source_type = 'csv'
         elif 'postgresql' in source:
             self.source_type = 'postgresql'
+        self.source = source
         self.num_bins = num_bins
         self.num_points_per_bin = num_points_per_bin
 

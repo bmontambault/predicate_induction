@@ -105,7 +105,20 @@ class PredicateInduction(object):
         else:
             self.insert_sorted(self.rejected, predicate, verbose=True)
 
-    def update_frontier_function(self, update_f, predicate_indices=None, verbose=False):
+    def get_predicate_indices(self, predicates):
+        """Get indices of given list of predicates in the frontier.
+
+        :param predicates: Frontier predicates to get indices of
+        :type predicates: list
+        """
+
+        if predicates is None:
+            indices = None
+        else:
+            indices = [self.search.frontier.index(predicate) for predicate in predicates]
+        return indices
+
+    def update_frontier_function(self, update_f, predicates=None, predicate_indices=None, verbose=False):
         """Update the current frontier given an update function.
 
         :param update_f: The function used to update the current frontier
@@ -117,6 +130,8 @@ class PredicateInduction(object):
         """
 
         new_frontier = []
+        if predicates is not None:
+            predicate_indices = self.get_predicate_indices(predicates)
         if predicate_indices is None:
             frontier = self.frontier[:]
         else:
@@ -368,7 +383,7 @@ class BottomUp(PredicateInduction):
 
         return self.refine_predicate(predicate, accepted, verbose) + self.merge_adjacent_predicate(predicate, accepted, verbose)
 
-    def update_frontier_expand(self, predicate_indices=None, verbose=False):
+    def update_frontier_expand(self, predicates=None, predicate_indices=None, verbose=False):
         """Update the current frontier by expanding predicates.
 
         :param predicate_indices: Indices of frontier predicates that will be updated, all predicates will be updated if None
@@ -377,9 +392,9 @@ class BottomUp(PredicateInduction):
         :type verbose: bool
         """
 
-        self.update_frontier_function(self.expand_predicate, predicate_indices, verbose)
+        self.update_frontier_function(self.expand_predicate, predicates, predicate_indices, verbose)
 
-    def update_frontier_refine(self, predicate_indices=None, verbose=False):
+    def update_frontier_refine(self, predicates=None, predicate_indices=None, verbose=False):
         """Update the current frontier by refining predicates.
 
         :param predicate_indices: Indices of frontier predicates that will be updated, all predicates will be updated if None
@@ -388,9 +403,9 @@ class BottomUp(PredicateInduction):
         :type verbose: bool
         """
 
-        self.update_frontier_function(self.refine_predicate, predicate_indices, verbose)
+        self.update_frontier_function(self.refine_predicate, predicates, predicate_indices, verbose)
 
-    def update_frontier(self, predicate_indices=None, verbose=False):
+    def update_frontier(self, predicates=None, predicate_indices=None, verbose=False):
         """Update the current frontier for one step.
 
         :param predicate_indices: Indices of frontier predicates that will be updated, all predicates will be updated if None
@@ -399,4 +414,4 @@ class BottomUp(PredicateInduction):
         :type verbose: bool
         """
 
-        self.update_frontier_function(self.refine_expand_predicate, predicate_indices, verbose)
+        self.update_frontier_function(self.refine_expand_predicate, predicates, predicate_indices, verbose)
