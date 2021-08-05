@@ -16,17 +16,15 @@ class Predicate(object):
     allowed_dtypes_map = {}
     allowed_dtypes = ['nominal', 'ordinal', 'numeric']
 
-    def __init__(self, keys, mask=None, score=None, adjacent=None):
+    def __init__(self, keys, mask=None, score=None, adjacent=None, parents=None):
         self.keys = sorted(keys)
         self.mask = mask
-        if score is None:
-            self.score = {}
-        else:
-            self.score = score
+        self.score = score
         if adjacent is None:
             self.adjacent = {}
         else:
             self.adjacent = adjacent
+        self.parents = parents
 
     def get_mask(self, data):
         """Return a mask that will return a subset when applied to the data.
@@ -71,10 +69,9 @@ class Predicate(object):
         :rtype: float
         """
 
-        score_f_name = score_f.__name__
-        if score_f_name not in self.score:
-            self.score[score_f_name] = self.get_score(data, score_f)
-        return self.score[score_f_name]
+        if self.score is None:
+            self.score = self.get_score(data, score_f)
+        return self.score
 
     def set_adjacent_predicate(self, key, predicate):
         """Set given predicate to be adjacent to this predicate along the axis of the given key.
@@ -113,6 +110,15 @@ class Predicate(object):
             return False
         else:
             return predicate in self.adjacent[key]
+
+    def is_adjacent_all(self, predicate, keys=None):
+        if keys is None:
+            keys = self.keys
+        for key in keys:
+            is_adjacent_key = self.is_adjacent(key, predicate)
+            if not is_adjacent_key:
+                return False
+        return True
 
     def is_contained(self, key, predicate):
         """Check if this predicate is contained by the given predicate along the given axis.
@@ -169,7 +175,7 @@ class Predicate(object):
                 return True
         return False
 
-    def is_subsumed_any_all_keys(self, accepted, data, score_f):
+    def is_subsumed_any_all_keys(self, accepted, data, score_f, keys=None):
         """Check if this predicate is subsumed by any of a list or predicates across all keys for the given scoring function.
 
         :param accepted: Lost of predicates of the same type that will be checked to see if it subsumes this predicate
@@ -181,9 +187,11 @@ class Predicate(object):
         :rtype: bool
         """
 
+        if keys is None:
+            keys = self.keys
         if len(accepted) == 0:
             return False
-        for key in self.keys:
+        for key in keys:
             subsumed = self.is_subsumed_any(key, accepted, data, score_f)
             if subsumed:
                 return True
@@ -268,9 +276,9 @@ class Conjunction(Predicate):
     allowed_dtypes_map = {'numeric': 'ordinal'}
     allowed_dtypes = ['nominal', 'ordinal']
     
-    def __init__(self, column_to_values, dtypes, data=None, column_to_mask=None, mask=None, score=None, adjacent=None):
+    def __init__(self, column_to_values, dtypes, data=None, column_to_mask=None, mask=None, score=None, adjacent=None, parents=None):
         self.columns = list(column_to_values.keys())
-        super().__init__(self.columns, mask, score, adjacent)
+        super().__init__(self.columns, mask, score, adjacent, parents)
         self.column_to_values = column_to_values
         self.dtypes = dtypes
         self.column_to_mask = column_to_mask
@@ -354,11 +362,11 @@ class Conjunction(Predicate):
                 column_to_values[column] = list(set(values + column_to_values[column]))
                 column_to_mask[column] = column_to_mask[column] | predicate.column_to_mask[column]
                 if column in adjacent:
-                    adjacent[column] = [p for p in self.adjacent[column] if not p.is_contained(column, predicate) and p not in predicate.adjacent] \
-                                    + [p for p in predicate.adjacent[column] if not p.is_contained(column, self) and p not in self.adjacent]
+                    adjacent[column] = [p for p in self.adjacent[column] if not p.is_contained(column, predicate) and p not in predicate.adjacent[column]] \
+                                    + [p for p in predicate.adjacent[column] if not p.is_contained(column, self) and p not in self.adjacent[column]]
 
         mask = self.get_mask_from_column_to_mask(column_to_mask)
-        merged_predicate = Conjunction(column_to_values, self.dtypes, column_to_mask=column_to_mask, mask=mask, adjacent=adjacent)
+        merged_predicate = Conjunction(column_to_values, self.dtypes, column_to_mask=column_to_mask, mask=mask, adjacent=adjacent, parents=[self, predicate])
         return merged_predicate
 
     @staticmethod
@@ -394,7 +402,8 @@ class Conjunction(Predicate):
             data_obj, columns = Conjunction.init_data_keys(data, dtypes, columns)
         elif columns is None:
             raise ValueError("if passing data_obj must also pass columns")
-        data_obj.convert_all(Conjunction.allowed_dtypes_map, Conjunction.allowed_dtypes, columns)
+        if data_obj.original_data is None:
+            data_obj.convert_all(Conjunction.allowed_dtypes_map, Conjunction.allowed_dtypes, columns)
 
         predicates = []
         for column in columns:
@@ -408,3 +417,8 @@ class Conjunction(Predicate):
 
     def __repr__(self):
         return str(self.column_to_values)
+
+    def __eq__(self, other):
+        if isinstance(other, Conjunction):
+            return self.column_to_values == other.column_to_values
+        return False
