@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Index &mdash; Predicate Induction 0.1.0 documentation</title>
+  <title>Index &mdash; Predicate Induction 0.2.1 documentation</title>
   
 
   
@@ -241,9 +241,17 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="predicate_induction.html#predicate_induction.BottomUp.expand">expand() (predicate_induction.BottomUp method)</a>
+</li>
       <li><a href="predicate_induction.html#predicate_induction.BottomUp.expand_predicate">expand_predicate() (predicate_induction.BottomUp method)</a>
 </li>
       <li><a href="predicate_induction.html#predicate_induction.BottomUp.expand_predicate_key">expand_predicate_key() (predicate_induction.BottomUp method)</a>
+</li>
+      <li><a href="predicate_induction.html#predicate_induction.BottomUp.expand_refine">expand_refine() (predicate_induction.BottomUp method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="predicate_induction.html#predicate_induction.BottomUp.expand_refine_predicate">expand_refine_predicate() (predicate_induction.BottomUp method)</a>
 </li>
       <li><a href="predicate_induction.html#data_type.Data.extract">extract() (data_type.Data method)</a>
 
@@ -251,8 +259,6 @@
         <li><a href="predicate_induction.html#data_type.Tabular.extract">(data_type.Tabular method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="predicate_induction.html#data_type.Tabular.extract_csv">extract_csv() (data_type.Tabular method)</a>
 </li>
       <li><a href="predicate_induction.html#data_type.Tabular.extract_postgresql">extract_postgresql() (data_type.Tabular method)</a>
@@ -265,6 +271,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="predicate_induction.html#predicate.Conjunction.get_column_to_mask">get_column_to_mask() (predicate.Conjunction method)</a>
 </li>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.get_conditionally_accepted">get_conditionally_accepted() (predicate_induction.PredicateInduction method)</a>
+</li>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.get_first_index">get_first_index() (predicate_induction.PredicateInduction method)</a>
+</li>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.get_key_to_predicates">get_key_to_predicates() (predicate_induction.PredicateInduction method)</a>
+</li>
       <li><a href="predicate_induction.html#predicate.Conjunction.get_mask">get_mask() (predicate.Conjunction method)</a>
 
       <ul>
@@ -275,10 +287,16 @@
 </li>
       <li><a href="predicate_induction.html#predicate.Conjunction.get_mask_from_column_to_mask">get_mask_from_column_to_mask() (predicate.Conjunction method)</a>
 </li>
-      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.get_predicate_score">get_predicate_score() (predicate_induction.PredicateInduction method)</a>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.get_max_score">get_max_score() (predicate_induction.PredicateInduction method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.get_predicate_score">get_predicate_score() (predicate_induction.PredicateInduction method)</a>
+</li>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.get_predicates">get_predicates() (predicate_induction.PredicateInduction method)</a>
+</li>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.get_predicates_maxiters">get_predicates_maxiters() (predicate_induction.PredicateInduction method)</a>
+</li>
       <li><a href="predicate_induction.html#predicate.Predicate.get_score">get_score() (predicate.Predicate method)</a>
 </li>
       <li><a href="predicate_induction.html#predicate.Predicate.get_score_cached">get_score_cached() (predicate.Predicate method)</a>
@@ -287,9 +305,9 @@
 </li>
       <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.greedy_merge">greedy_merge() (predicate_induction.PredicateInduction method)</a>
 </li>
-      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.greedy_merge_predicate">greedy_merge_predicate() (predicate_induction.PredicateInduction method)</a>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.greedy_merge_frontier">greedy_merge_frontier() (predicate_induction.PredicateInduction method)</a>
 </li>
-      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.greedy_merge_step">greedy_merge_step() (predicate_induction.PredicateInduction method)</a>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.greedy_merge_predicate">greedy_merge_predicate() (predicate_induction.PredicateInduction method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -321,17 +339,17 @@
 </li>
       <li><a href="predicate_induction.html#predicate.Predicate.is_adjacent">is_adjacent() (predicate.Predicate method)</a>
 </li>
-      <li><a href="predicate_induction.html#predicate.Conjunction.is_contained">is_contained() (predicate.Conjunction method)</a>
+      <li><a href="predicate_induction.html#predicate.Predicate.is_adjacent_all">is_adjacent_all() (predicate.Predicate method)</a>
+</li>
+      <li><a href="predicate_induction.html#predicate.Predicate.is_contained">is_contained() (predicate.Predicate method)</a>
+</li>
+      <li><a href="predicate_induction.html#predicate.Conjunction.is_contained_key">is_contained_key() (predicate.Conjunction method)</a>
 
       <ul>
-        <li><a href="predicate_induction.html#predicate.Predicate.is_contained">(predicate.Predicate method)</a>
+        <li><a href="predicate_induction.html#predicate.Predicate.is_contained_key">(predicate.Predicate method)</a>
 </li>
       </ul></li>
-      <li><a href="predicate_induction.html#predicate.Predicate.is_subsumed">is_subsumed() (predicate.Predicate method)</a>
-</li>
-      <li><a href="predicate_induction.html#predicate.Predicate.is_subsumed_any">is_subsumed_any() (predicate.Predicate method)</a>
-</li>
-      <li><a href="predicate_induction.html#predicate.Predicate.is_subsumed_any_all_keys">is_subsumed_any_all_keys() (predicate.Predicate method)</a>
+      <li><a href="predicate_induction.html#predicate.Predicate.is_worse">is_worse() (predicate.Predicate method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -365,7 +383,11 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="predicate_induction.html#predicate_induction.BottomUp.merge_predicate_candidates_key">merge_predicate_candidates_key() (predicate_induction.BottomUp method)</a>
+      <li><a href="predicate_induction.html#predicate_induction.BottomUp.merge_predicate_candidates">merge_predicate_candidates() (predicate_induction.BottomUp method)</a>
+</li>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.merge_predicates">merge_predicates() (predicate_induction.PredicateInduction method)</a>
+</li>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.move_predicate">move_predicate() (predicate_induction.PredicateInduction method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -387,15 +409,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="predicate_induction.html#predicate_induction.PredicateInduction">PredicateInduction (class in predicate_induction)</a>
 </li>
-      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.prune_subsumed">prune_subsumed() (predicate_induction.PredicateInduction method)</a>
-</li>
   </ul></td>
 </tr></table>
 
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="predicate_induction.html#predicate_induction.BottomUp.refine_expand_predicate">refine_expand_predicate() (predicate_induction.BottomUp method)</a>
+      <li><a href="predicate_induction.html#predicate_induction.BottomUp.refine">refine() (predicate_induction.BottomUp method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -429,19 +449,13 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="predicate_induction.html#predicate_induction.BottomUp.update_frontier">update_frontier() (predicate_induction.BottomUp method)</a>
-</li>
-      <li><a href="predicate_induction.html#predicate_induction.BottomUp.update_frontier_expand">update_frontier_expand() (predicate_induction.BottomUp method)</a>
-</li>
-      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.update_frontier_function">update_frontier_function() (predicate_induction.PredicateInduction method)</a>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.update_accepted_rejected_function">update_accepted_rejected_function() (predicate_induction.PredicateInduction method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.update_frontier_nsteps">update_frontier_nsteps() (predicate_induction.PredicateInduction method)</a>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.update_accepted_rejected_predicate">update_accepted_rejected_predicate() (predicate_induction.PredicateInduction method)</a>
 </li>
-      <li><a href="predicate_induction.html#predicate_induction.BottomUp.update_frontier_refine">update_frontier_refine() (predicate_induction.BottomUp method)</a>
-</li>
-      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.update_predicate_frontier">update_predicate_frontier() (predicate_induction.PredicateInduction method)</a>
+      <li><a href="predicate_induction.html#predicate_induction.PredicateInduction.update_frontier">update_frontier() (predicate_induction.PredicateInduction method)</a>
 </li>
   </ul></td>
 </tr></table>

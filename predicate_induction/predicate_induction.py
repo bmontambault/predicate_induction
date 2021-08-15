@@ -11,6 +11,12 @@ class PredicateInduction(object):
     :type score_f: function
     :param frontier: List of predicates to continue search from, set to base_predicates if None
     :type frontier: list
+    :param accepted: List of predicates that have been accepted, set to [] if None
+    :type accepted: list
+    :param rejected: List of predicates that have been rejected, set to [] if None
+    :type rejected: list
+    :param conditionally_accepted: List of predicates that have been conditionally accepted, set to [] if None
+    :type conditionally_accepted: list
     """
 
     def __init__(self, data, base_predicates, score_f, frontier=None, accepted=None, rejected=None, conditionally_accepted=None):
@@ -45,6 +51,14 @@ class PredicateInduction(object):
         return predicate.get_score_cached(self.data, self.score_f)
 
     def update_frontier(self, parent, children, verbose=False, tracked_predicates=None):
+        """Update the frontier given a parent predicate and its children
+
+        :param parent: Parent predicate
+        :type parent: Predicate
+        :param children: Predicates that have been derived from the parent predicate
+        :type children: list
+        """
+
         is_done = True
         if verbose and (tracked_predicates is None or parent in tracked_predicates):
             children_added_to_frontier = []
@@ -82,6 +96,14 @@ class PredicateInduction(object):
         return is_done, all_children_subsumed
 
     def insert_sorted(self, queue, predicate):
+        """Insert a predicate in sorted order
+
+        :param queue: Where to insert the predicate
+        :type queue: list
+        :param predicate: Predicate to insert
+        :type predicate: Predicate
+        """
+
         if len(queue) == 0:
             queue.append(predicate)
             return 1
@@ -95,10 +117,31 @@ class PredicateInduction(object):
         return len(queue)
 
     def move_predicate(self, predicate, location, destination):
+        """Move a predicate from one list to another
+
+        :param predicate: Predicate to move
+        :type predicate: Predicate
+        :param location: Where predicate will be moved from
+        :type location: list
+        :param destination: Where predicate will be moved to
+        :type destination: list
+        """
+
         location.remove(predicate)
         self.insert_sorted(destination, predicate)
 
     def update_accepted_rejected_predicate(self, predicate, is_done, all_children_subsumed, threshold=0, verbose=False, tracked_predicates=None):
+        """Either accept or reject the given predicate.
+        :param predicate: Predicate to be either accepted or rejected
+        :type predicate: Predicate
+        :param is_done: Whether or not the given predicate is done generating new predicates:
+        :type is_done: bool
+        :param all_children_subsumed: Whether or not all of the given predicate's children are subsumed
+        :type all_children_subsumed: bool
+        :param threshold: Score threshold to determine whether the given predicate should be accepted
+        :type threshold: float
+        """
+
         if is_done:
             if all_children_subsumed:
                 if verbose and (tracked_predicates is None or predicate in tracked_predicates):
@@ -145,13 +188,14 @@ class PredicateInduction(object):
         :type predicates: list
         :param verbose: Option to print messages
         :type verbose: bool
+        :return: The new predicate and remaining predicates
+        :rtype: (Predicate, [Predicate])
         """
         
         score = self.get_predicate_score(predicate)
         candidate_predicates = deepcopy(predicates)
         for i in range(len(predicates)):
             p = candidate_predicates[i]
-            # print(predicate, p, predicate.is_adjacent_all(p, keys))
             if predicate.is_adjacent_all(p, keys):
                 merged_predicate = predicate.merge(p)
                 merged_score = self.get_predicate_score(merged_predicate)
@@ -169,6 +213,8 @@ class PredicateInduction(object):
         
         :param predicates: List of predicates to merge
         :type predicates: list
+        :param threshold: Score threshold to determine if a predicate should be merged
+        :type threshold: float
         :param verbose: Option to print messages
         :type verbose: bool
         :return: List of merged predicates
@@ -186,6 +232,14 @@ class PredicateInduction(object):
         return merged_predicates
 
     def get_key_to_predicates(self, predicates):
+        """Get a dictionary mapping unique keys found in a list of predicates to a list of predicates containing those keys.
+
+        :param predicates: List of predicates
+        :type predicates: list
+        :return: Dictionary mapping unique keys to lists of predicates
+        :rtype: dict
+        """
+
         key_to_predicates = {}
         for predicate in predicates:
             key = tuple(predicate.keys)
@@ -196,6 +250,14 @@ class PredicateInduction(object):
         return key_to_predicates
 
     def greedy_merge_frontier(self, threshold=0, verbose=False, tracked_predicates=None):
+        """Greedily merge predicates contained in the frontier.
+
+        :param threshold: Score threshold to determine if a predicate should be merged
+        :type threshold: float
+        :return: List of predicates that have been merged
+        :rtype: list
+        """
+
         merged_predicates = []
         key_to_predicates = self.get_key_to_predicates(self.frontier)
         for keys, key_predicates in key_to_predicates.items():
@@ -215,6 +277,14 @@ class PredicateInduction(object):
         return merged_predicates
 
     def get_conditionally_accepted(self, conditional_threshold, verbose, tracked_predicates):
+        """Get predicates from the frontier that have not been accepted but can be conditionally accepted.
+
+        :param conditional_threshold: Score threshold to determine if a predicate can be conditionally accepted
+        :type conditional_threshold: float
+        :return: List of conditionally accepted predicates
+        :rtype: list
+        """
+
         if conditional_threshold is not None:
             conditionally_accepted = self.greedy_merge_frontier(conditional_threshold, verbose, tracked_predicates)
         else:
@@ -222,6 +292,16 @@ class PredicateInduction(object):
         return conditionally_accepted
 
     def merge_predicates(self, predicates_a, predicates_b):
+        """Merge two lists of predicates.
+
+        :param predicates_a: One list of predicates to merge
+        :type predicates_a: list
+        :param predicates_b: Another list of predicates to merge
+        :type predicates_b: list
+        :return: List of merged predicates
+        :rtype: list
+        """
+
         merged_predicates = []
         keep_a = [True for i in range(len(predicates_a))]
         keep_b = [True for j in range(len(predicates_b))]
@@ -241,6 +321,14 @@ class PredicateInduction(object):
         return merged_predicates
 
     def get_first_index(self, predicates=None):
+        """Get the index of the first predicate that appears in the frontier out of a list of predicates.
+
+        :param predicates: List of predicates that appear in the frontier
+        :type predicates: list
+        :return: index of first predicate appearing in the frontier
+        :rtype: int
+        """
+
         if predicates is None:
             first_index = 0
         else:
@@ -248,6 +336,16 @@ class PredicateInduction(object):
         return first_index
 
     def update_accepted_rejected_function(self, update_f, predicates=None, threshold=0, verbose=False, tracked_predicates=None):
+        """Update accepted and rejected by applying a function to generate new predicates from the first predicate in the frontier.
+
+        :param update_f: Function used to generate new predicates
+        :type update_f: function
+        :param predicates: Predicates that are candidates to generate new predicates
+        :type predicates: list
+        :param threshold: Score threshold to determine if a predicate should be accepted
+        :type threshold: int
+        """
+
         first_index = self.get_first_index(predicates)
         predicate = self.frontier.pop(first_index)            
         children = update_f(predicate, verbose, tracked_predicates)
@@ -255,14 +353,42 @@ class PredicateInduction(object):
         self.update_accepted_rejected_predicate(predicate, is_done, all_children_subsumed, threshold, verbose, tracked_predicates)
 
     def get_predicates(self, conditional_threshold, verbose=False, tracked_predicates=None):
+        """Get conditionally accepted predicates from the frontier and then merge them with accepted predicates.
+
+        :param conditional_threshold: Score determines if a predicate should be conditionally accepted
+        :type conditional_threshold: float
+        :return: List of predicates that have been conditionally accepted
+        :rtype: list
+        """
+
         conditionally_accepted = self.get_conditionally_accepted(conditional_threshold, verbose, tracked_predicates)
         merged_accepted = self.merge_predicates(self.accepted, conditionally_accepted)
         return merged_accepted
 
     def get_max_score(self):
+        """Get the maximum score of the predicate with the max score out of either the frontier or accepted.
+
+        :return: Maximum score
+        :rtype: float
+        """
+
         return max(self.frontier[0].score, self.accepted[0].score)
 
     def get_predicates_maxiters(self, update_f, predicates=None, maxiters=None, threshold=0, conditional_threshold=None, verbose=False, tracked_predicates=None):
+        """Generate new predicates using the given function for a given number of iterations or until the frontier is empty.
+
+        :param update_f: Function used to generate new predicates
+        :type update_f: function
+        :param predicates: Predicates that are candidates to generate new predicates
+        :type predicates: list
+        :param maxiters: Maximum number of iterations to run, will run until the frontier is empty if None
+        :type maxiters: int
+        :param threshold: Score threshold to determine if a predicate should be accepted
+        :type threshold: int
+        :param conditional_threshold: Score determines if a predicate should be conditionally accepted
+        :type conditional_threshold: float
+        """
+
         i = 0
         while len(self.frontier) > 0 and (maxiters is None or i < maxiters):
             if conditional_threshold is not None:
@@ -278,64 +404,6 @@ class BottomUp(PredicateInduction):
     """This class is for performing bottom up predicate induction. This method involves beginning with a large number
     of predicates, each covering a small space of the data, and merging predicates into a smaller number each covering
     a larger space.
-    -- Set threshold and conditionalThreshold
-    -- Initialize empty queues F (frontier), A (accepted), and R (rejected)
-    -- Add each base predicate to F
-    -- While F is not empty and i < max_iters:
-        -- For each predicate p in F:
-            -- let DONE = True
-            -- Remove p from F
-            -- Generate a list of new predicates N by:
-                -- expanding: merge p with adjacent predicates along each dimension
-                -- refining: merge p with predicates along uncovered dimension
-            -- For each new predicate n:
-                -- If score(n) > score(p):
-                    -- let DONE = False
-                    -- let SUBSUMED = False
-                    -- Check for all predicates in A that fully contain n (include the same dimensions as pand all points are included in n) and add them to the queue C
-                    -- For c in C:
-                        -- If score(c) > score(n) add n to R, let SUBSUMED = TRUE, and stop inner loop
-                    -- If not SUBSUMED add n to F
-            -- If DONE:
-                -- If the score(p) > threshold:
-                    -- Check for predicates in A that are fully contained by p and add them to an empty queue B
-                    -- let SUBSUMING = True
-                    -- For b in B:
-                        -- If score(b) >= score(p) add p to R, let SUBSUMING = False, and stop inner loop
-                    -- If SUBSUMING move all b in B from A to R and add p to A
-                -- Else add p to R
-    -- Initialize empty queue CA (conditionally accepted)
-    -- If F is not empty
-        -- let greedyMerge = function(p, sortedQueue){
-            -- For q in sortedQueue:
-                -- let m = p.merge(q)
-                -- If score(m) > score(q):
-                    -- remove q from sortedQueue
-                    -- greedyMerge(m, sortedQueue)
-                -- Else return [p, sortedQueue]
-        }
-        -- Initialize set of k empty queues K for k sets of predicates in F with the same dimensions
-        -- For f in F:
-            -- add f to K[f.dimensions] in sorted order
-        -- For k in K:
-            -- While k is not empty:
-                -- let k0 = k[0]
-                -- remove k0 from k
-                -- let k0, k = greedyMerge(k0, k)
-                -- If score(k0) > conditionalThreshold add k0 to CA
-    -- Initialize empty queue FINAL
-    -- let keepA = {True | a in A}
-    -- let keepCA = {True | ca in CA}
-    -- For a in A:
-        -- For ca in CA:
-            -- If a.contains(ca) or ca.contains(a)
-                -- If score(a) >= score(ca) let keepCA[ca.index] = False
-                -- If score(a) < score(ca) let keepA[a.index] = False
-    -- For a in A:
-        -- If keepA[a.index] add a to FINAL
-    -- For ca in CA:
-        -- If keepCA[ca.index] add ca to FINAL
-    -- return sorted(FINAL)
 
     :param data: Data to search
     :param base_predicates: List of predicates to begin search
@@ -344,10 +412,16 @@ class BottomUp(PredicateInduction):
     :type score_f: function
     :param frontier: List of predicates to continue search from, set to base_predicates if None
     :type frontier: list
+    :param accepted: List of predicates that have been accepted, set to [] if None
+    :type accepted: list
+    :param rejected: List of predicates that have been rejected, set to [] if None
+    :type rejected: list
+    :param conditionally_accepted: List of predicates that have been conditionally accepted, set to [] if None
+    :type conditionally_accepted: list
     """
 
-    def __init__(self, data, base_predicates, score_f, frontier=None, accepted=None, rejected=None):
-        super().__init__(data, base_predicates, score_f, frontier, accepted, rejected)
+    def __init__(self, data, base_predicates, score_f, frontier=None, accepted=None, rejected=None, conditionally_accepted=None):
+        super().__init__(data, base_predicates, score_f, frontier, accepted, rejected, conditionally_accepted)
         self.keys = list(set([p.keys[0] for p in self.base_predicates]))
         self.key_to_base_predicates = {k:
             [p for p in self.base_predicates if len(p.keys) == 1 and p.keys[0] == k]
@@ -362,8 +436,6 @@ class BottomUp(PredicateInduction):
         :type key: str
         :param candidate_predicates: List of predicates to merge
         :type candidate_predicates: list
-        :param accepted: List of predicates that will be checked against to see if the predicate being inserted is subsumed
-        :type accepted: list
         :param verbose: Option to print messages
         :type verbose: bool
         :return: New predicates
@@ -408,8 +480,6 @@ class BottomUp(PredicateInduction):
         :type predicate: Predicate
         :param key: Axis along which predicates will be merged
         :type key: str
-        :param accepted: List of predicates that will be checked against to see if the predicate being inserted is subsumed
-        :type accepted: list
         :param verbose: Option to print messages
         :type verbose: bool
         :return: New predicates
@@ -427,8 +497,6 @@ class BottomUp(PredicateInduction):
         :type keys: list
         :param f: Function to apply to the given predicate
         :type f: function
-        :param accepted: List of predicates that will be checked against to see if the predicate being inserted is subsumed
-        :type accepted: list
         :param verbose: Option to print messages
         :type verbose: bool
         :return: New predicates
@@ -442,8 +510,6 @@ class BottomUp(PredicateInduction):
 
         :param predicate: Predicate that will be refined by adding additional keys
         :type predicate: Predicate
-        :param accepted: List of predicates that will be checked against to see if the predicate being inserted is subsumed
-        :type accepted: list
         :param verbose: Option to print messages
         :type verbose: bool
         :return: New predicates
@@ -457,8 +523,6 @@ class BottomUp(PredicateInduction):
 
         :param predicate: Predicate that will be merged with adjacent predicates
         :type predicate: Predicate
-        :param accepted: List of predicates that will be checked against to see if the predicate being inserted is subsumed
-        :type accepted: list
         :param verbose: Option to print messages
         :type verbose: bool
         :return: New predicates
@@ -472,8 +536,6 @@ class BottomUp(PredicateInduction):
 
         :param predicate: Predicate that will be refined and expanded
         :type predicate: Predicate
-        :param accepted: List of predicates that will be checked against to see if the predicate being inserted is subsumed
-        :type accepted: list
         :param verbose: Option to print messages
         :type verbose: bool
         :return: New predicates
@@ -483,10 +545,46 @@ class BottomUp(PredicateInduction):
         return self.expand_predicate(predicate, verbose, tracked_predicates) + self.refine_predicate(predicate, verbose, tracked_predicates)
 
     def expand(self, predicates=None, maxiters=None, threshold=0, conditional_threshold=None, verbose=False, tracked_predicates=None):
+        """Generate new predicates by expanding for a given number of iterations or until the frontier is empty.
+
+        :param predicates: Predicates that are candidates to generate new predicates
+        :type predicates: list
+        :param maxiters: Maximum number of iterations to run, will run until the frontier is empty if None
+        :type maxiters: int
+        :param threshold: Score threshold to determine if a predicate should be accepted
+        :type threshold: int
+        :param conditional_threshold: Score determines if a predicate should be conditionally accepted
+        :type conditional_threshold: float
+        """
+
         return self.get_predicates_maxiters(self.expand_predicate, predicates, maxiters, threshold, conditional_threshold, verbose, tracked_predicates)
 
     def refine(self, predicates=None, maxiters=None, threshold=0, conditional_threshold=None,verbose=False, tracked_predicates=None):
+        """Generate new predicates by refining for a given number of iterations or until the frontier is empty.
+
+        :param predicates: Predicates that are candidates to generate new predicates
+        :type predicates: list
+        :param maxiters: Maximum number of iterations to run, will run until the frontier is empty if None
+        :type maxiters: int
+        :param threshold: Score threshold to determine if a predicate should be accepted
+        :type threshold: int
+        :param conditional_threshold: Score determines if a predicate should be conditionally accepted
+        :type conditional_threshold: float
+        """
+
         return self.get_predicates_maxiters(self.refine_predicate, predicates, maxiters, threshold, conditional_threshold, verbose, tracked_predicates)
 
     def expand_refine(self, predicates=None, maxiters=None, threshold=0, conditional_threshold=None,verbose=False, tracked_predicates=None):
+        """Generate new predicates by expanding and refining for a given number of iterations or until the frontier is empty.
+
+        :param predicates: Predicates that are candidates to generate new predicates
+        :type predicates: list
+        :param maxiters: Maximum number of iterations to run, will run until the frontier is empty if None
+        :type maxiters: int
+        :param threshold: Score threshold to determine if a predicate should be accepted
+        :type threshold: int
+        :param conditional_threshold: Score determines if a predicate should be conditionally accepted
+        :type conditional_threshold: float
+        """
+
         return self.get_predicates_maxiters(self.expand_refine_predicate, predicates, maxiters, threshold, conditional_threshold, verbose, tracked_predicates)

@@ -31,7 +31,9 @@ class Predicate(object):
         """Return a mask that will return a subset when applied to the data.
         
         :param data: Data to return mask for
+        :type data: pd.DataFrame
         :return: mask
+        :rtype: pd.Series
         """
         
         raise NotImplementedError
@@ -40,7 +42,9 @@ class Predicate(object):
         """Return a mask that will return a subset when applied to the data. Get the cached results if available.
         
         :param data: Data to return mask for
+        :type data: pd.DataFrame
         :return: mask
+        :rtype: pd.Series
         """
 
         if self.mask is None:
@@ -52,6 +56,7 @@ class Predicate(object):
         """Return a score based on the data and the given scoring function.
 
         :param data: Data to get score for
+        :type data: pd.DataFrame
         :param score_f: Function used to calculate score
         :type score_f: function
         :return: score
@@ -65,7 +70,9 @@ class Predicate(object):
         """Return a score based on the data and the given scoring function. Get the cached results if available.
         
         :param data: Data to get score for
+        :type data: pd.DataFrame
         :param score_f: Function used to calculate score
+        :type score_f: function
         :return: score
         :rtype: float
         """
@@ -80,6 +87,7 @@ class Predicate(object):
         :param key: Axis along which predicates are adjacent
         :type key: str
         :param predicate: Adjacent predicate of the same type
+        :type predicate: Predicate
         """
 
         if key not in self.adjacent:
@@ -93,6 +101,7 @@ class Predicate(object):
         :param key: Axis along which predicates are adjacent
         :type key: str
         :param predicate: Adjacent predicate of the same type
+        :type predicate: Predicate
         """
         self.set_adjacent_predicate(key, predicate)
         predicate.set_adjacent_predicate(key, self)
@@ -103,6 +112,7 @@ class Predicate(object):
         :param key: Axis along which predicates are adjacent
         :type key: str
         :param predicate: Adjacent predicate of the same type
+        :type predicate: Predicate
         :return: Whether or not the given predicate is adjacent along the given axis
         :rtype: bool
         """
@@ -113,6 +123,16 @@ class Predicate(object):
             return predicate in self.adjacent[key]
 
     def is_adjacent_all(self, predicate, keys=None):
+        """Check if the given predicate is adjacent to this predicate along all axes.
+
+        :param predicate: Adjacent predicate of the same type
+        :type predicate: Predicate
+        :param keys: Check along this axis whether this predicate is contained
+        :type keys: list
+        :return: Whether or not the given predicate is adjacent along all axes
+        :rtype: bool
+        """
+
         if keys is None:
             keys = self.keys
         for key in keys:
@@ -122,6 +142,19 @@ class Predicate(object):
         return True
 
     def is_worse(self, predicate, data, score_f):
+        """Check if this predicate has a lower score than the given predicate.
+
+        :param predicate: Adjacent predicate of the same type
+        :type predicate: Predicate
+        :param data: Data to get score for
+        :type data: pd.DataFrame
+        :param score_f: Function used to calculate score
+        :type score_f: function
+        :return: score
+        :return: Whether or not this predicate has a lower score than the given predicate
+        :rtype: bool
+        """
+        
         score = self.get_score(data , score_f)
         predicate_score = predicate.get_score(data, score_f)
         worse = score <= predicate_score
@@ -133,6 +166,7 @@ class Predicate(object):
         :param key: Check along this axis whether this predicate is contained
         :type key: str
         :param predicate: Predicate of the same type that will be checked to see if it contains this predicate
+        :type predicate: Predicate
         :return: Whether or not this predicate is contained by the given predicate along the given axis
         :rtype: bool
         """
@@ -140,6 +174,16 @@ class Predicate(object):
         raise NotImplementedError
 
     def is_contained(self, predicate, keys=None):
+        """Check if this predicate is contained by the given predicate along any axis.
+
+        :param predicate: Predicate of the same type that will be checked to see if it contains this predicate
+        :type predicate: Predicate
+        :param keys: Check along this axis whether this predicate is contained
+        :type keys: list
+        :return: Whether or not this predicate is contained by the given predicate along any axis
+        :rtype: bool
+        """
+        
         if keys is None:
             keys = predicate.keys
         for key in keys:
@@ -150,99 +194,6 @@ class Predicate(object):
             if not is_contained_key:
                 return False
         return True
-
-    def is_subsumed_key(self, key, predicate, data, score_f):
-        if key in predicate.keys:
-            if self.is_contained_key(key, predicate):
-                return self.is_worse(predicate, data, score_f)
-        return False
-
-    def is_subsumed(self, predicate, data, score_f, keys=None):
-        contained = self.is_contained(predicate, keys)
-        if not contained:
-            return False
-        else:
-            is_worse = self.is_worse(predicate, data, score_f)
-            return is_worse
-
-    def is_subsumed_any(self, predicates, data, score_f):
-        for predicate in predicates:
-            subsumed = self.is_subsumed(predicate, data, score_f)
-            if subsumed:
-                return True
-        return False
-
-    def is_subsumed_any_key(self, key, predicates, data, score_f):
-        for predicate in predicates:
-            subsumed = self.is_subsumed_key(key, predicate, data, score_f)
-            if subsumed:
-                return True
-        return False
-
-    # def is_subsumed(self, key, predicate, data, score_f):
-    #     """Check if this predicate is subsumed by the given predicate along the given axis for the given scoring function.
-    #     A predicate is subsumed by another if it is both contained along the given axis and has a lower score.
-
-    #     :param key: Check along this axis whether this predicate is subsumed
-    #     :type key: str
-    #     :param predicate: Predicate of the same type that will be checked to see if it subsumes this predicate
-    #     :param data: Data to get score for
-    #     :param score_f: Function used to calculate score
-    #     :type score_f: function
-    #     :return: Whether or not this predicate is subsumed by the given predicate along the given axis
-    #     :rtype: bool
-    #     """
-
-    #     contained = self.is_contained(key, predicate)
-    #     if not contained:
-    #         return False
-    #     else:
-    #         score = self.get_score(data , score_f)
-    #         container_score = predicate.get_score(data, score_f)
-    #         worse = score <= container_score
-    #         return worse
-
-    # def is_subsumed_any(self, key, accepted, data, score_f):
-    #     """Check if this predicate is subsumed by any of a list of predicates across the given axis for the given scoring function.
-        
-    #     :param key: Check along this axis whether this predicate is subsumed
-    #     :type key: str
-    #     :param accepted: Lost of predicates of the same type that will be checked to see if it subsumes this predicate
-    #     :type accepted: list
-    #     :param data: Data to get score for
-    #     :param score_f: Function used to calculate score
-    #     :type score_f: function
-    #     :return: Whether or not this predicate is subsumed by any of the given predicate along the given axis
-    #     :rtype: bool
-    #     """
-
-    #     for accepted_predicate in accepted:
-    #         subsumed = self.is_subsumed(key, accepted_predicate, data, score_f)
-    #         if subsumed:
-    #             return True
-    #     return False
-
-    # def is_subsumed_any_all_keys(self, accepted, data, score_f, keys=None):
-    #     """Check if this predicate is subsumed by any of a list or predicates across all keys for the given scoring function.
-
-    #     :param accepted: Lost of predicates of the same type that will be checked to see if it subsumes this predicate
-    #     :type accepted: list
-    #     :param data: Data to get score for
-    #     :param score_f: Function used to calculate score
-    #     :type score_f: function
-    #     :return: Whether or not this predicate is subsumed
-    #     :rtype: bool
-    #     """
-
-    #     if keys is None:
-    #         keys = self.keys
-    #     if len(accepted) == 0:
-    #         return False
-    #     for key in keys:
-    #         subsumed = self.is_subsumed_any(key, accepted, data, score_f)
-    #         if subsumed:
-    #             return True
-    #     return False
 
     def merge(self, predicate, data=None):
         """Merge this predicate with the given predicate

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Documentation &mdash; Predicate Induction 0.1.0 documentation</title>
+  <title>Documentation &mdash; Predicate Induction 0.2.1 documentation</title>
   
 
   
@@ -434,7 +434,7 @@ will be converted to a pandas dataframe.</p>
 <h2><code class="docutils literal notranslate"><span class="pre">Predicate</span></code><a class="headerlink" href="#predicate" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="predicate.Predicate">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate.</span></span><span class="sig-name descname"><span class="pre">Predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjacent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate.</span></span><span class="sig-name descname"><span class="pre">Predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjacent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parents</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Abstract class for predicate object.</p>
 <dl class="field-list simple">
@@ -463,10 +463,13 @@ will be converted to a pandas dataframe.</p>
 <dd><p>Return a mask that will return a subset when applied to the data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> – Data to return mask for</p>
+<dd class="field-odd"><p><strong>data</strong> (<em>pd.DataFrame</em>) – Data to return mask for</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>mask</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
 </dd>
 </dl>
 </dd></dl>
@@ -477,10 +480,13 @@ will be converted to a pandas dataframe.</p>
 <dd><p>Return a mask that will return a subset when applied to the data. Get the cached results if available.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> – Data to return mask for</p>
+<dd class="field-odd"><p><strong>data</strong> (<em>pd.DataFrame</em>) – Data to return mask for</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>mask</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
 </dd>
 </dl>
 </dd></dl>
@@ -492,7 +498,7 @@ will be converted to a pandas dataframe.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> – Data to get score for</p></li>
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Data to get score for</p></li>
 <li><p><strong>score_f</strong> (<em>function</em>) – Function used to calculate score</p></li>
 </ul>
 </dd>
@@ -512,8 +518,8 @@ will be converted to a pandas dataframe.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> – Data to get score for</p></li>
-<li><p><strong>score_f</strong> – Function used to calculate score</p></li>
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Data to get score for</p></li>
+<li><p><strong>score_f</strong> (<em>function</em>) – Function used to calculate score</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -585,7 +591,7 @@ will be converted to a pandas dataframe.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>key</strong> (<em>str</em>) – Axis along which predicates are adjacent</p></li>
-<li><p><strong>predicate</strong> – Adjacent predicate of the same type</p></li>
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Adjacent predicate of the same type</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -598,14 +604,54 @@ will be converted to a pandas dataframe.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.is_adjacent_all">
+<span class="sig-name descname"><span class="pre">is_adjacent_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.is_adjacent_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given predicate is adjacent to this predicate along all axes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Adjacent predicate of the same type</p></li>
+<li><p><strong>keys</strong> (<em>list</em>) – Check along this axis whether this predicate is contained</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether or not the given predicate is adjacent along all axes</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="predicate.Predicate.is_contained">
-<span class="sig-name descname"><span class="pre">is_contained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.is_contained" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">is_contained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.is_contained" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if this predicate is contained by the given predicate along any axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate of the same type that will be checked to see if it contains this predicate</p></li>
+<li><p><strong>keys</strong> (<em>list</em>) – Check along this axis whether this predicate is contained</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Whether or not this predicate is contained by the given predicate along any axis</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate.Predicate.is_contained_key">
+<span class="sig-name descname"><span class="pre">is_contained_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.is_contained_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if this predicate is contained by the given predicate along the given axis.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>key</strong> (<em>str</em>) – Check along this axis whether this predicate is contained</p></li>
-<li><p><strong>predicate</strong> – Predicate of the same type that will be checked to see if it contains this predicate</p></li>
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate of the same type that will be checked to see if it contains this predicate</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -618,67 +664,25 @@ will be converted to a pandas dataframe.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="predicate.Predicate.is_subsumed">
-<span class="sig-name descname"><span class="pre">is_subsumed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.is_subsumed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if this predicate is subsumed by the given predicate along the given axis for the given scoring function.
-A predicate is subsumed by another if it is both contained along the given axis and has a lower score.</p>
+<dt class="sig sig-object py" id="predicate.Predicate.is_worse">
+<span class="sig-name descname"><span class="pre">is_worse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.is_worse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if this predicate has a lower score than the given predicate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> (<em>str</em>) – Check along this axis whether this predicate is subsumed</p></li>
-<li><p><strong>predicate</strong> – Predicate of the same type that will be checked to see if it subsumes this predicate</p></li>
-<li><p><strong>data</strong> – Data to get score for</p></li>
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Adjacent predicate of the same type</p></li>
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Data to get score for</p></li>
 <li><p><strong>score_f</strong> (<em>function</em>) – Function used to calculate score</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Whether or not this predicate is subsumed by the given predicate along the given axis</p>
+<dd class="field-even"><p>score</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether or not this predicate has a lower score than the given predicate</p>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="predicate.Predicate.is_subsumed_any">
-<span class="sig-name descname"><span class="pre">is_subsumed_any</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.is_subsumed_any" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if this predicate is subsumed by any of a list of predicates across the given axis for the given scoring function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> (<em>str</em>) – Check along this axis whether this predicate is subsumed</p></li>
-<li><p><strong>accepted</strong> (<em>list</em>) – Lost of predicates of the same type that will be checked to see if it subsumes this predicate</p></li>
-<li><p><strong>data</strong> – Data to get score for</p></li>
-<li><p><strong>score_f</strong> (<em>function</em>) – Function used to calculate score</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Whether or not this predicate is subsumed by any of the given predicate along the given axis</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="predicate.Predicate.is_subsumed_any_all_keys">
-<span class="sig-name descname"><span class="pre">is_subsumed_any_all_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">accepted</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Predicate.is_subsumed_any_all_keys" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if this predicate is subsumed by any of a list or predicates across all keys for the given scoring function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>accepted</strong> (<em>list</em>) – Lost of predicates of the same type that will be checked to see if it subsumes this predicate</p></li>
-<li><p><strong>data</strong> – Data to get score for</p></li>
-<li><p><strong>score_f</strong> (<em>function</em>) – Function used to calculate score</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Whether or not this predicate is subsumed</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
@@ -708,7 +712,7 @@ A predicate is subsumed by another if it is both contained along the given axis 
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>key</strong> (<em>str</em>) – Axis along which predicates are adjacent</p></li>
-<li><p><strong>predicate</strong> – Adjacent predicate of the same type</p></li>
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Adjacent predicate of the same type</p></li>
 </ul>
 </dd>
 </dl>
@@ -722,7 +726,7 @@ A predicate is subsumed by another if it is both contained along the given axis 
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>key</strong> (<em>str</em>) – Axis along which predicates are adjacent</p></li>
-<li><p><strong>predicate</strong> – Adjacent predicate of the same type</p></li>
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Adjacent predicate of the same type</p></li>
 </ul>
 </dd>
 </dl>
@@ -735,7 +739,7 @@ A predicate is subsumed by another if it is both contained along the given axis 
 <h2><code class="docutils literal notranslate"><span class="pre">Conjunction</span></code><a class="headerlink" href="#conjunction" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="predicate.Conjunction">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate.</span></span><span class="sig-name descname"><span class="pre">Conjunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_to_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_to_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjacent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Conjunction" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate.</span></span><span class="sig-name descname"><span class="pre">Conjunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_to_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtypes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_to_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjacent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parents</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Conjunction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><code class="xref py py-class docutils literal notranslate"><span class="pre">predicate.Predicate</span></code></a></p>
 <p>This class defines subsets of data as a conjunction over tabular data.</p>
 <dl class="field-list simple">
@@ -834,8 +838,8 @@ A predicate is subsumed by another if it is both contained along the given axis 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="predicate.Conjunction.is_contained">
-<span class="sig-name descname"><span class="pre">is_contained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Conjunction.is_contained" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="predicate.Conjunction.is_contained_key">
+<span class="sig-name descname"><span class="pre">is_contained_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate.Conjunction.is_contained_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if this predicate is contained by the given predicate along the given column.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -880,7 +884,7 @@ A predicate is subsumed by another if it is both contained along the given axis 
 <h2><code class="docutils literal notranslate"><span class="pre">PredicateInduction</span></code><a class="headerlink" href="#predicateinduction" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="predicate_induction.PredicateInduction">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate_induction.</span></span><span class="sig-name descname"><span class="pre">PredicateInduction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frontier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rejected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate_induction.</span></span><span class="sig-name descname"><span class="pre">PredicateInduction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frontier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rejected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditionally_accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Abstract class for predicate induction object.</p>
 <dl class="field-list simple">
@@ -890,9 +894,77 @@ A predicate is subsumed by another if it is both contained along the given axis 
 <li><p><strong>base_predicates</strong> (<em>list</em>) – List of predicates to begin search</p></li>
 <li><p><strong>score_f</strong> (<em>function</em>) – Function used to score predicates</p></li>
 <li><p><strong>frontier</strong> (<em>list</em>) – List of predicates to continue search from, set to base_predicates if None</p></li>
+<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that have been accepted, set to [] if None</p></li>
+<li><p><strong>rejected</strong> (<em>list</em>) – List of predicates that have been rejected, set to [] if None</p></li>
+<li><p><strong>conditionally_accepted</strong> (<em>list</em>) – List of predicates that have been conditionally accepted, set to [] if None</p></li>
 </ul>
 </dd>
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.get_conditionally_accepted">
+<span class="sig-name descname"><span class="pre">get_conditionally_accepted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conditional_threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.get_conditionally_accepted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get predicates from the frontier that have not been accepted but can be conditionally accepted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>conditional_threshold</strong> (<em>float</em>) – Score threshold to determine if a predicate can be conditionally accepted</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of conditionally accepted predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.get_first_index">
+<span class="sig-name descname"><span class="pre">get_first_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.get_first_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the index of the first predicate that appears in the frontier out of a list of predicates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>predicates</strong> (<em>list</em>) – List of predicates that appear in the frontier</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>index of first predicate appearing in the frontier</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.get_key_to_predicates">
+<span class="sig-name descname"><span class="pre">get_key_to_predicates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.get_key_to_predicates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a dictionary mapping unique keys found in a list of predicates to a list of predicates containing those keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>predicates</strong> (<em>list</em>) – List of predicates</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dictionary mapping unique keys to lists of predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.get_max_score">
+<span class="sig-name descname"><span class="pre">get_max_score</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.get_max_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the maximum score of the predicate with the max score out of either the frontier or accepted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Maximum score</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="predicate_induction.PredicateInduction.get_predicate_score">
 <span class="sig-name descname"><span class="pre">get_predicate_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.get_predicate_score" title="Permalink to this definition">¶</a></dt>
@@ -905,18 +977,70 @@ A predicate is subsumed by another if it is both contained along the given axis 
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.get_predicates">
+<span class="sig-name descname"><span class="pre">get_predicates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conditional_threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.get_predicates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get conditionally accepted predicates from the frontier and then merge them with accepted predicates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>conditional_threshold</strong> (<em>float</em>) – Score determines if a predicate should be conditionally accepted</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of predicates that have been conditionally accepted</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.get_predicates_maxiters">
+<span class="sig-name descname"><span class="pre">get_predicates_maxiters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditional_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.get_predicates_maxiters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate new predicates using the given function for a given number of iterations or until the frontier is empty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>update_f</strong> (<em>function</em>) – Function used to generate new predicates</p></li>
+<li><p><strong>predicates</strong> (<em>list</em>) – Predicates that are candidates to generate new predicates</p></li>
+<li><p><strong>maxiters</strong> (<em>int</em>) – Maximum number of iterations to run, will run until the frontier is empty if None</p></li>
+<li><p><strong>threshold</strong> (<em>int</em>) – Score threshold to determine if a predicate should be accepted</p></li>
+<li><p><strong>conditional_threshold</strong> (<em>float</em>) – Score determines if a predicate should be conditionally accepted</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="predicate_induction.PredicateInduction.greedy_merge">
-<span class="sig-name descname"><span class="pre">greedy_merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.greedy_merge" title="Permalink to this definition">¶</a></dt>
-<dd><p>Merge a list of predicates.</p>
+<span class="sig-name descname"><span class="pre">greedy_merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.greedy_merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>A single step of merging a list of predicates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>predicates</strong> (<em>list</em>) – List of predicates to merge</p></li>
+<li><p><strong>threshold</strong> (<em>float</em>) – Score threshold to determine if a predicate should be merged</p></li>
 <li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>List of merged predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.greedy_merge_frontier">
+<span class="sig-name descname"><span class="pre">greedy_merge_frontier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.greedy_merge_frontier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Greedily merge predicates contained in the frontier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>threshold</strong> (<em>float</em>) – Score threshold to determine if a predicate should be merged</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of predicates that have been merged</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>list</p>
@@ -926,7 +1050,7 @@ A predicate is subsumed by another if it is both contained along the given axis 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="predicate_induction.PredicateInduction.greedy_merge_predicate">
-<span class="sig-name descname"><span class="pre">greedy_merge_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.greedy_merge_predicate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">greedy_merge_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.greedy_merge_predicate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge a given predicate with a list of other predicates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -936,18 +1060,38 @@ A predicate is subsumed by another if it is both contained along the given axis 
 <li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The new predicate and remaining predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate">Predicate</a>, [<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate">Predicate</a>])</p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.greedy_merge_step">
-<span class="sig-name descname"><span class="pre">greedy_merge_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.greedy_merge_step" title="Permalink to this definition">¶</a></dt>
-<dd><p>A single step of merging a list of predicates.</p>
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.insert_sorted">
+<span class="sig-name descname"><span class="pre">insert_sorted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.insert_sorted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert a predicate in sorted order</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>predicates</strong> (<em>list</em>) – List of predicates to merge</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+<li><p><strong>queue</strong> (<em>list</em>) – Where to insert the predicate</p></li>
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate to insert</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.merge_predicates">
+<span class="sig-name descname"><span class="pre">merge_predicates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicates_b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.merge_predicates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge two lists of predicates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicates_a</strong> (<em>list</em>) – One list of predicates to merge</p></li>
+<li><p><strong>predicates_b</strong> (<em>list</em>) – Another list of predicates to merge</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -960,82 +1104,58 @@ A predicate is subsumed by another if it is both contained along the given axis 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.insert_sorted">
-<span class="sig-name descname"><span class="pre">insert_sorted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.insert_sorted" title="Permalink to this definition">¶</a></dt>
-<dd><p>Insert the given predicate into the given queue in sorted order.</p>
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.move_predicate">
+<span class="sig-name descname"><span class="pre">move_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.move_predicate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move a predicate from one list to another</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>queue</strong> (<em>list</em>) – List of predicates to insert into</p></li>
-<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate to insert</p></li>
-<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Index where predicate was insorted</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.prune_subsumed">
-<span class="sig-name descname"><span class="pre">prune_subsumed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.prune_subsumed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prune predicates from a given list that are subsumed by predicates in the frontier.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>predicates</strong> (<em>list</em>) – List of predicates to prune</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Pruned list of predicates</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.update_frontier_function">
-<span class="sig-name descname"><span class="pre">update_frontier_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.update_frontier_function" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update the current frontier given an update function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>update_f</strong> (<em>function</em>) – The function used to update the current frontier</p></li>
-<li><p><strong>predicate_indices</strong> (<em>list</em>) – Indices of frontier predicates that will be updated, all predicates will be updated if None</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate to move</p></li>
+<li><p><strong>location</strong> (<em>list</em>) – Where predicate will be moved from</p></li>
+<li><p><strong>destination</strong> (<em>list</em>) – Where predicate will be moved to</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.update_frontier_nsteps">
-<span class="sig-name descname"><span class="pre">update_frontier_nsteps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.update_frontier_nsteps" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update the current frontier for a given number of steps</p>
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.update_accepted_rejected_function">
+<span class="sig-name descname"><span class="pre">update_accepted_rejected_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.update_accepted_rejected_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update accepted and rejected by applying a function to generate new predicates from the first predicate in the frontier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – Number of steps to update the frontier</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>update_f</strong> (<em>function</em>) – Function used to generate new predicates</p></li>
+<li><p><strong>predicates</strong> (<em>list</em>) – Predicates that are candidates to generate new predicates</p></li>
+<li><p><strong>threshold</strong> (<em>int</em>) – Score threshold to determine if a predicate should be accepted</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.update_predicate_frontier">
-<span class="sig-name descname"><span class="pre">update_predicate_frontier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frontier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.update_predicate_frontier" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update the current frontier given a predicate and its children. If the predicate has not children and has a score greater
-than the set threshold it will be added to the list of accepted predicates. Otherwise its children will be added to the list
-of frontier predicates.</p>
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.update_accepted_rejected_predicate">
+<span class="sig-name descname"><span class="pre">update_accepted_rejected_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_done</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_children_subsumed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.update_accepted_rejected_predicate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Either accept or reject the given predicate.
+:param predicate: Predicate to be either accepted or rejected
+:type predicate: Predicate
+:param is_done: Whether or not the given predicate is done generating new predicates:
+:type is_done: bool
+:param all_children_subsumed: Whether or not all of the given predicate’s children are subsumed
+:type all_children_subsumed: bool
+:param threshold: Score threshold to determine whether the given predicate should be accepted
+:type threshold: float</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.PredicateInduction.update_frontier">
+<span class="sig-name descname"><span class="pre">update_frontier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.PredicateInduction.update_frontier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the frontier given a parent predicate and its children</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>frontier</strong> (<em>list</em>) – Current list of frontier predicates</p></li>
-<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Original predicate</p></li>
-<li><p><strong>children</strong> (<em>list</em>) – Children of original predicate</p></li>
+<li><p><strong>parent</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Parent predicate</p></li>
+<li><p><strong>children</strong> (<em>list</em>) – Predicates that have been derived from the parent predicate</p></li>
 </ul>
 </dd>
 </dl>
@@ -1048,7 +1168,7 @@ of frontier predicates.</p>
 <h2><code class="docutils literal notranslate"><span class="pre">BottomUp</span></code><a class="headerlink" href="#bottomup" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="predicate_induction.BottomUp">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate_induction.</span></span><span class="sig-name descname"><span class="pre">BottomUp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frontier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rejected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">predicate_induction.</span></span><span class="sig-name descname"><span class="pre">BottomUp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frontier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rejected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditionally_accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#predicate_induction.PredicateInduction" title="predicate_induction.PredicateInduction"><code class="xref py py-class docutils literal notranslate"><span class="pre">predicate_induction.PredicateInduction</span></code></a></p>
 <p>This class is for performing bottom up predicate induction. This method involves beginning with a large number
 of predicates, each covering a small space of the data, and merging predicates into a smaller number each covering
@@ -1060,12 +1180,15 @@ a larger space.</p>
 <li><p><strong>base_predicates</strong> (<em>list</em>) – List of predicates to begin search</p></li>
 <li><p><strong>score_f</strong> (<em>function</em>) – Function used to score predicates</p></li>
 <li><p><strong>frontier</strong> (<em>list</em>) – List of predicates to continue search from, set to base_predicates if None</p></li>
+<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that have been accepted, set to [] if None</p></li>
+<li><p><strong>rejected</strong> (<em>list</em>) – List of predicates that have been rejected, set to [] if None</p></li>
+<li><p><strong>conditionally_accepted</strong> (<em>list</em>) – List of predicates that have been conditionally accepted, set to [] if None</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="predicate_induction.BottomUp.apply_all_keys">
-<span class="sig-name descname"><span class="pre">apply_all_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.apply_all_keys" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">apply_all_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.apply_all_keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply a function to all keys included in a given predicate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1073,7 +1196,6 @@ a larger space.</p>
 <li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate that the function will be applied to</p></li>
 <li><p><strong>keys</strong> (<em>list</em>) – List of keys</p></li>
 <li><p><strong>f</strong> (<em>function</em>) – Function to apply to the given predicate</p></li>
-<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
 <li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
 </ul>
 </dd>
@@ -1087,14 +1209,29 @@ a larger space.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.expand">
+<span class="sig-name descname"><span class="pre">expand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditional_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.expand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate new predicates by expanding for a given number of iterations or until the frontier is empty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicates</strong> (<em>list</em>) – Predicates that are candidates to generate new predicates</p></li>
+<li><p><strong>maxiters</strong> (<em>int</em>) – Maximum number of iterations to run, will run until the frontier is empty if None</p></li>
+<li><p><strong>threshold</strong> (<em>int</em>) – Score threshold to determine if a predicate should be accepted</p></li>
+<li><p><strong>conditional_threshold</strong> (<em>float</em>) – Score determines if a predicate should be conditionally accepted</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="predicate_induction.BottomUp.expand_predicate">
-<span class="sig-name descname"><span class="pre">expand_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.expand_predicate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">expand_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.expand_predicate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Expand the given predicate by merging with adjacent predicates along all keys.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate that will be merged with adjacent predicates</p></li>
-<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
 <li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
 </ul>
 </dd>
@@ -1109,14 +1246,13 @@ a larger space.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="predicate_induction.BottomUp.expand_predicate_key">
-<span class="sig-name descname"><span class="pre">expand_predicate_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.expand_predicate_key" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">expand_predicate_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.expand_predicate_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Expand the given predicate by merging with adjacent predicates along the given key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate that will be merged with adjacent predicates</p></li>
 <li><p><strong>key</strong> (<em>str</em>) – Axis along which predicates will be merged</p></li>
-<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
 <li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
 </ul>
 </dd>
@@ -1130,8 +1266,44 @@ a larger space.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.BottomUp.merge_predicate_candidates_key">
-<span class="sig-name descname"><span class="pre">merge_predicate_candidates_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.merge_predicate_candidates_key" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.expand_refine">
+<span class="sig-name descname"><span class="pre">expand_refine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditional_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.expand_refine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate new predicates by expanding and refining for a given number of iterations or until the frontier is empty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicates</strong> (<em>list</em>) – Predicates that are candidates to generate new predicates</p></li>
+<li><p><strong>maxiters</strong> (<em>int</em>) – Maximum number of iterations to run, will run until the frontier is empty if None</p></li>
+<li><p><strong>threshold</strong> (<em>int</em>) – Score threshold to determine if a predicate should be accepted</p></li>
+<li><p><strong>conditional_threshold</strong> (<em>float</em>) – Score determines if a predicate should be conditionally accepted</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.expand_refine_predicate">
+<span class="sig-name descname"><span class="pre">expand_refine_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.expand_refine_predicate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refine and expand a given predicate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate that will be refined and expanded</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New predicates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.merge_predicate_candidates">
+<span class="sig-name descname"><span class="pre">merge_predicate_candidates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_predicates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.merge_predicate_candidates" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge the given predicate with a set of candidate predicates along a the given key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1139,7 +1311,6 @@ a larger space.</p>
 <li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate that will be merged with candidate predicates</p></li>
 <li><p><strong>key</strong> (<em>str</em>) – Axis along which predicates will be merged</p></li>
 <li><p><strong>candidate_predicates</strong> (<em>list</em>) – List of predicates to merge</p></li>
-<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
 <li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
 </ul>
 </dd>
@@ -1153,35 +1324,29 @@ a larger space.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.BottomUp.refine_expand_predicate">
-<span class="sig-name descname"><span class="pre">refine_expand_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.refine_expand_predicate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Refine and expand a given predicate.</p>
+<dt class="sig sig-object py" id="predicate_induction.BottomUp.refine">
+<span class="sig-name descname"><span class="pre">refine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditional_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.refine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate new predicates by refining for a given number of iterations or until the frontier is empty.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate that will be refined and expanded</p></li>
-<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
+<li><p><strong>predicates</strong> (<em>list</em>) – Predicates that are candidates to generate new predicates</p></li>
+<li><p><strong>maxiters</strong> (<em>int</em>) – Maximum number of iterations to run, will run until the frontier is empty if None</p></li>
+<li><p><strong>threshold</strong> (<em>int</em>) – Score threshold to determine if a predicate should be accepted</p></li>
+<li><p><strong>conditional_threshold</strong> (<em>float</em>) – Score determines if a predicate should be conditionally accepted</p></li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>New predicates</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="predicate_induction.BottomUp.refine_predicate">
-<span class="sig-name descname"><span class="pre">refine_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.refine_predicate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">refine_predicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.refine_predicate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Refine the given predicate by adding additional keys that the predicate does not already include.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>predicate</strong> (<a class="reference internal" href="#predicate.Predicate" title="predicate.Predicate"><em>Predicate</em></a>) – Predicate that will be refined by adding additional keys</p></li>
-<li><p><strong>accepted</strong> (<em>list</em>) – List of predicates that will be checked against to see if the predicate being inserted is subsumed</p></li>
 <li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
 </ul>
 </dd>
@@ -1196,7 +1361,7 @@ a larger space.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="predicate_induction.BottomUp.refine_predicate_key">
-<span class="sig-name descname"><span class="pre">refine_predicate_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accepted</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.refine_predicate_key" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">refine_predicate_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracked_predicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.refine_predicate_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Refine the given predicate by merging with base predicates with the given key.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1212,48 +1377,6 @@ a larger space.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.BottomUp.update_frontier">
-<span class="sig-name descname"><span class="pre">update_frontier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.update_frontier" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update the current frontier for one step.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>predicate_indices</strong> (<em>list</em>) – Indices of frontier predicates that will be updated, all predicates will be updated if None</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.BottomUp.update_frontier_expand">
-<span class="sig-name descname"><span class="pre">update_frontier_expand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.update_frontier_expand" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update the current frontier by expanding predicates.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>predicate_indices</strong> (<em>list</em>) – Indices of frontier predicates that will be updated, all predicates will be updated if None</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="predicate_induction.BottomUp.update_frontier_refine">
-<span class="sig-name descname"><span class="pre">update_frontier_refine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predicate_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#predicate_induction.BottomUp.update_frontier_refine" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update the current frontier by refining predicates.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>predicate_indices</strong> (<em>list</em>) – Indices of frontier predicates that will be updated, all predicates will be updated if None</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em>) – Option to print messages</p></li>
-</ul>
 </dd>
 </dl>
 </dd></dl>
